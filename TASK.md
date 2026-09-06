@@ -62,7 +62,7 @@
 - [x] Articles.
 - [x] Homepage section manager.
 - [x] Navigation.
-- [ ] SEO.
+- [x] SEO.
 - [ ] Theme presets.
 - [ ] Settings.
 - [ ] Contact inbox.

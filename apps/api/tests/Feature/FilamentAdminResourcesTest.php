@@ -112,4 +112,12 @@ class FilamentAdminResourcesTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee('Projects');
     }
+
+    public function test_admin_can_render_seo_pages_resource_page(): void
+    {
+        $response = $this->actingAs($this->admin)->get('/admin/seo-pages');
+
+        $response->assertStatus(200);
+        $response->assertSee('/projects');
+    }
 }
