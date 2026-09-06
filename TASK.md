@@ -39,7 +39,7 @@
 - [x] Education.
 - [x] Skills.
 - [x] Services.
-- [ ] Testimonials.
+- [x] Testimonials.
 - [ ] Articles/tags.
 - [ ] Contact messages.
 - [ ] Homepage sections.
