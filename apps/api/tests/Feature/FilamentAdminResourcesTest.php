@@ -72,4 +72,12 @@ class FilamentAdminResourcesTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee('Distributed Architecture');
     }
+
+    public function test_admin_can_render_services_resource_page(): void
+    {
+        $response = $this->actingAs($this->admin)->get('/admin/services');
+
+        $response->assertStatus(200);
+        $response->assertSee('Systems Architecture');
+    }
 }
