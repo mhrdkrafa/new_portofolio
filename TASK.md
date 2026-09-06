@@ -2,7 +2,7 @@
 
 ## Phase 0 — Direction
 - [x] Define personal brand direction.
-- [ ] Create visual references/moodboard.
+- [x] Create visual references/moodboard.
 - [ ] Define hero concept.
 - [ ] Decide light/dark/default mode.
 - [ ] Prototype motion language.
