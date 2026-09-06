@@ -52,7 +52,7 @@
 ## Phase 4 — Admin CMS
 - [x] Dashboard.
 - [x] Profile.
-- [ ] Projects.
+- [x] Projects.
 - [ ] Media.
 - [ ] Experience.
 - [ ] Education.

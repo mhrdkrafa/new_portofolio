@@ -26,4 +26,19 @@ class FilamentAdminResourcesTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee('Mahardika Rafa');
     }
+
+    public function test_admin_can_render_projects_resource_page(): void
+    {
+        $response = $this->actingAs($this->admin)->get('/admin/projects');
+
+        $response->assertStatus(200);
+        $response->assertSee('Cinematic Digital Portfolio');
+    }
+
+    public function test_admin_can_render_create_project_page(): void
+    {
+        $response = $this->actingAs($this->admin)->get('/admin/projects/create');
+
+        $response->assertStatus(200);
+    }
 }
