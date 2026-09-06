@@ -33,7 +33,7 @@
 - [x] Profile.
 - [x] Social links.
 - [x] Projects.
-- [ ] Project media.
+- [x] Project media.
 - [ ] Technologies.
 - [ ] Experience.
 - [ ] Education.

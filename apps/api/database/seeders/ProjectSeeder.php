@@ -53,6 +53,38 @@ class ProjectSeeder extends Seeder
             ]
         );
 
+        $ledgerProject = Project::where('slug', 'autonomous-core-ledger')->first();
+        $ledgerProject->media()->updateOrCreate(
+            ['path' => 'projects/ledger-cover.webp'],
+            [
+                'media_type' => 'image',
+                'alt_text' => 'Autonomous Core Ledger Architecture Diagram',
+                'caption' => 'High-frequency transaction streaming pipeline visualization',
+                'sort_order' => 1,
+                'is_cover' => true,
+                'width' => 1920,
+                'height' => 1080,
+            ]
+        );
+
+        $ledgerProject->links()->updateOrCreate(
+            ['type' => 'live'],
+            [
+                'label' => 'Live Deployment',
+                'url' => 'https://ledger.mahardika.dev',
+                'sort_order' => 1,
+            ]
+        );
+
+        $ledgerProject->links()->updateOrCreate(
+            ['type' => 'github'],
+            [
+                'label' => 'Repository',
+                'url' => 'https://github.com/mhrdkrafa/core-ledger',
+                'sort_order' => 2,
+            ]
+        );
+
         Project::updateOrCreate(
             ['slug' => 'cinematic-digital-portfolio'],
             [
