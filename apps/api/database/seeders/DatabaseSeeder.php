@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
             WebsiteSettingSeeder::class,
             ThemePresetSeeder::class,
             SeoPageSeeder::class,
+            AuditLogSeeder::class,
         ]);
     }
 }

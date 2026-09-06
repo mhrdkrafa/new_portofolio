@@ -47,7 +47,7 @@
 - [x] Settings.
 - [x] Theme presets.
 - [x] SEO pages.
-- [ ] Audit logs.
+- [x] Audit logs.
 
 ## Phase 4 — Admin CMS
 - [ ] Dashboard.
