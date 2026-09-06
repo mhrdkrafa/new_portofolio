@@ -61,7 +61,7 @@
 - [x] Testimonials.
 - [x] Articles.
 - [x] Homepage section manager.
-- [ ] Navigation.
+- [x] Navigation.
 - [ ] SEO.
 - [ ] Theme presets.
 - [ ] Settings.

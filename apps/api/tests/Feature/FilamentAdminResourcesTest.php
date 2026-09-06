@@ -104,4 +104,12 @@ class FilamentAdminResourcesTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee('hero');
     }
+
+    public function test_admin_can_render_navigation_items_resource_page(): void
+    {
+        $response = $this->actingAs($this->admin)->get('/admin/navigation-items');
+
+        $response->assertStatus(200);
+        $response->assertSee('Projects');
+    }
 }
