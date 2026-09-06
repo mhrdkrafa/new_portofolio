@@ -27,7 +27,7 @@
 - [x] Install Filament 5.
 - [x] Configure queues/scheduler.
 - [x] Configure tests.
-- [ ] Create admin user.
+- [x] Create admin user.
 
 ## Phase 3 — Database
 - [ ] Profile.
