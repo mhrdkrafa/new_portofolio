@@ -42,7 +42,7 @@
 - [x] Testimonials.
 - [x] Articles/tags.
 - [x] Contact messages.
-- [ ] Homepage sections.
+- [x] Homepage sections.
 - [ ] Navigation.
 - [ ] Settings.
 - [ ] Theme presets.
