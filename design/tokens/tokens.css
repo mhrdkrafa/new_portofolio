@@ -149,4 +149,30 @@ html.light {
   --radius-md: 6px;
   --radius-lg: 8px;
   --radius-full: 9999px;
+
+  /* ==========================================================================
+     Shadow Tokens — Obsidian Dark (Default)
+     ========================================================================== */
+  --shadow-none: none;
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.10);
+  --shadow-xl: 0 24px 60px rgba(0, 0, 0, 0.90), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  --shadow-glow-cyan: 0 0 24px rgba(0, 240, 255, 0.25);
+  --shadow-glow-emerald: 0 0 16px rgba(16, 185, 129, 0.40);
+  --shadow-inner-hairline: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* Light Mode Shadow Overrides */
+[data-theme="light"],
+html.light {
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.10);
+  --shadow-xl: 0 20px 48px rgba(0, 0, 0, 0.14);
+  --shadow-glow-cyan: 0 0 20px rgba(2, 132, 199, 0.20);
+  --shadow-glow-emerald: 0 0 14px rgba(5, 150, 105, 0.35);
+  --shadow-inner-hairline: inset 0 1px 0 rgba(0, 0, 0, 0.06);
 }

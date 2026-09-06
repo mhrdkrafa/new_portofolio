@@ -165,5 +165,22 @@ To maintain architectural precision and eliminate "bubbly SaaS template" aesthet
 | `radius-lg` | `8px` | Project showcase cards, article panels, modal sheets | Maximum allowable card curve |
 | `radius-full` | `9999px` | Live status dots, circular avatar clips | Strictly for circular elements |
 
+---
+
+## 5. Shadow & Elevation System
+
+On dark obsidian backgrounds, traditional drop shadows are visually ineffective. Elevation is therefore achieved through **Tactile Layered Illumination**: combining subtle outer ambient drop shadows with an inner hairline highlight (`inset 0 1px 0 rgba(255,255,255,0.08)`). In light mode, diffuse architectural shadows provide spatial separation.
+
+| Token | Dark Mode Formula | Light Mode Formula | Applied Components |
+| :--- | :--- | :--- | :--- |
+| `shadow-xs` | `0 1px 2px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.05)` | `0 1px 2px rgba(0,0,0,0.05)` | Tags, code badges |
+| `shadow-sm` | `0 2px 8px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.06)` | `0 2px 6px rgba(0,0,0,0.06)` | Buttons, dropdowns |
+| `shadow-md` | `0 8px 24px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.08)` | `0 6px 16px rgba(0,0,0,0.08)` | Hover cards, flyouts |
+| `shadow-lg` | `0 16px 40px rgba(0,0,0,0.85), inset 0 1px 0 rgba(255,255,255,0.10)` | `0 12px 32px rgba(0,0,0,0.10)` | Modals, pinned reels |
+| `shadow-xl` | `0 24px 60px rgba(0,0,0,0.90), inset 0 1px 0 rgba(255,255,255,0.12)` | `0 20px 48px rgba(0,0,0,0.14)` | Lightbox previews |
+| `shadow-glow-cyan` | `0 0 24px rgba(0, 240, 255, 0.25)` | `0 0 20px rgba(2, 132, 199, 0.20)` | Magnetic CTA active focus |
+| `shadow-glow-emerald` | `0 0 16px rgba(16, 185, 129, 0.40)` | `0 0 14px rgba(5, 150, 105, 0.35)` | Live status pulse |
+
+
 
 

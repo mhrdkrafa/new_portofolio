@@ -13,7 +13,7 @@
 - [x] Define colors.
 - [x] Define spacing.
 - [x] Define radius.
-- [ ] Define shadows.
+- [x] Define shadows.
 - [ ] Define motion tokens.
 - [ ] Define reduced-motion behavior.
 - [ ] Define reusable components.
