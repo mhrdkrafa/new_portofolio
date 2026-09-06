@@ -1,7 +1,7 @@
 # Portfolio — TASK.md
 
 ## Phase 0 — Direction
-- [ ] Define personal brand direction.
+- [x] Define personal brand direction.
 - [ ] Create visual references/moodboard.
 - [ ] Define hero concept.
 - [ ] Decide light/dark/default mode.
