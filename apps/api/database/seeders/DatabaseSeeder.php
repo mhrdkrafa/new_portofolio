@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             AdminUserSeeder::class,
             ProjectSeeder::class,
             SkillSeeder::class,
+            ServiceSeeder::class,
         ]);
     }
 }

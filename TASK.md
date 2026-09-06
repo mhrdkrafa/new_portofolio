@@ -38,7 +38,7 @@
 - [x] Experience.
 - [x] Education.
 - [x] Skills.
-- [ ] Services.
+- [x] Services.
 - [ ] Testimonials.
 - [ ] Articles/tags.
 - [ ] Contact messages.
