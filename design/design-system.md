@@ -115,3 +115,39 @@ The color system is organized around two foundational themes: **Obsidian Dark (D
 | Light Secondary | `#475569` | `#F8F9FA` | **7.1:1** | AAA (Pass) |
 | Light Muted | `#64748B` | `#F8F9FA` | **4.6:1** | AA (Pass) |
 
+---
+
+## 3. Spacing & Layout Grid System
+
+The spacing system relies on an 8pt modular grid with 4pt half-steps for micro-components and fluid padding for responsive layouts.
+
+### 3.1 Base Spacing Scale
+
+| Token | Rem | Pixel Equivalent | Typical Usage |
+| :--- | :--- | :--- | :--- |
+| `space-1` | `0.25rem` | `4px` | Micro-badge padding, inline icon spacing |
+| `space-2` | `0.5rem` | `8px` | Button horizontal padding, tag gaps |
+| `space-3` | `0.75rem` | `12px` | Card internal micro-gutters |
+| `space-4` | `1.0rem` | `16px` | Standard component margin, form field padding |
+| `space-5` | `1.25rem` | `20px` | Dialog padding, card internal spacing |
+| `space-6` | `1.5rem` | `24px` | Medium card gutters, container edge offset |
+| `space-8` | `2.0rem` | `32px` | Grid column gutters, module margins |
+| `space-10` | `2.5rem` | `40px` | Header padding, section sub-block gaps |
+| `space-12` | `3.0rem` | `48px` | Major component separations |
+| `space-16` | `4.0rem` | `64px` | Standard section vertical gaps |
+| `space-20` | `5.0rem` | `80px` | Hero bottom margins, feature separation |
+| `space-24` | `6.0rem` | `96px` | High-impact architectural empty space |
+| `space-32` | `8.0rem` | `128px` | Major page chapter dividers |
+
+### 3.2 Containers & Fluid Layout Gutter
+
+- `container-sm`: `640px` (Text dossiers, articles, simple forms)
+- `container-md`: `768px` (Reading view, experience timeline)
+- `container-lg`: `1024px` (Projects grid, capabilities)
+- `container-xl`: `1280px` (Main portfolio layout)
+- `container-2xl`: `1440px` (Hero panoramic lockup)
+- `container-max`: `1600px` (Wide architectural viewports)
+- `pad-gutter`: `clamp(1.25rem, 4vw, 3.5rem)` (Edge safety padding)
+- `section-gap`: `clamp(5rem, 10vw, 8.5rem)` (Standard section spacing)
+
+

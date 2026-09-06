@@ -11,7 +11,7 @@
 ## Phase 1 — Design System
 - [x] Define typography.
 - [x] Define colors.
-- [ ] Define spacing.
+- [x] Define spacing.
 - [ ] Define radius.
 - [ ] Define shadows.
 - [ ] Define motion tokens.
