@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Motion Language & Hero Prototype — Mahardika Rafa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-canvas: #0A0A0C;
+      --bg-surface: #121216;
+      --bg-subtle: #18181F;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-strong: rgba(255, 255, 255, 0.2);
+      --text-primary: #EDEDED;
+      --text-secondary: #A1A1AA;
+      --text-muted: #71717A;
+      --accent-primary: #00F0FF;
+      --status-live: #10B981;
+      --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --font-body: 'Inter', sans-serif;
+      
+      --ease-quart-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-elastic: cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    html.light {
+      --bg-canvas: #F8F9FA;
+      --bg-surface: #FFFFFF;
+      --bg-subtle: #F1F3F5;
+      --border-subtle: rgba(0, 0, 0, 0.08);
+      --border-strong: rgba(0, 0, 0, 0.25);
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #64748B;
+      --accent-primary: #0284C7;
+      --status-live: #059669;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-canvas);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Tactile Grain Overlay */
+    .film-grain {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 999;
+      opacity: 0.035;
+    }
+
+    /* Ambient Canvas */
+    #ambient-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Top Navigation */
+    header {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.75rem 2.5rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .brand-mark {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .brand-badge {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
+
+    .system-status {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--status-live);
+      box-shadow: 0 0 10px var(--status-live);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    /* Hero Section */
+    .hero-container {
+      position: relative;
+      z-index: 10;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 6rem 2.5rem 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: calc(100vh - 90px);
+    }
+
+    .eyebrow-ribbon {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      opacity: 0;
+      transform: translateY(-12px);
+      transition: opacity 0.6s var(--ease-quart-out), transform 0.6s var(--ease-quart-out);
+    }
+
+    .headline-wrap {
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 7.5vw, 6.5rem);
+      font-weight: 800;
+      line-height: 1.02;
+      letter-spacing: -0.045em;
+      color: var(--text-primary);
+    }
+
+    .title-line {
+      display: block;
+      overflow: hidden;
+    }
+
+    .title-line span {
+      display: inline-block;
+      transform: translateY(115%);
+      opacity: 0;
+      transition: transform 0.9s var(--ease-quart-out), opacity 0.9s var(--ease-quart-out);
+    }
+
+    .hero-subheadline {
+      font-family: var(--font-mono);
+      font-size: clamp(0.9rem, 2vw, 1.15rem);
+      color: var(--accent-primary);
+      letter-spacing: 0.05em;
+      margin-bottom: 1.75rem;
+      text-transform: uppercase;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.8s var(--ease-quart-out), transform 0.8s var(--ease-quart-out);
+    }
+
+    .hero-statement {
+      max-width: 680px;
+      font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+      line-height: 1.7;
+      color: var(--text-secondary);
+      margin-bottom: 3.5rem;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.9s var(--ease-quart-out), transform 0.9s var(--ease-quart-out);
+    }
+
+    /* Magnetic CTA Buttons */
+    .cta-group {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s var(--ease-quart-out), transform 1s var(--ease-quart-out);
+    }
+
+    .btn-magnetic {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1.1rem 2.2rem;
+      border-radius: 6px;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: transform 0.3s var(--ease-elastic), background-color 0.2s ease, border-color 0.2s ease;
+      will-change: transform;
+    }
+
+    .btn-primary {
+      background: var(--text-primary);
+      color: var(--bg-canvas);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 8px 30px rgba(255, 255, 255, 0.15);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text-primary);
+      border: 1px solid var(--border-subtle);
+      backdrop-filter: blur(12px);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--border-strong);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    /* Scroll Indicator */
+    .scroll-cue {
+      position: absolute;
+      bottom: 2.5rem;
+      right: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
+
+    .scroll-line {
+      width: 36px;
+      height: 1px;
+      background: var(--border-subtle);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .scroll-line::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: var(--accent-primary);
+      animation: crawl 2.5s infinite var(--ease-quart-out);
+    }
+
+    @keyframes crawl {
+      0% { left: -100%; }
+      50%, 100% { left: 100%; }
+    }
+
+    /* Interactive Lab Panel */
+    .lab-panel {
+      position: fixed;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      z-index: 100;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      box-shadow: 0 12px 36px rgba(0,0,0,0.5);
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .lab-title {
+      font-weight: 700;
+      color: var(--accent-primary);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .lab-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .lab-btn {
+      background: var(--bg-subtle);
+      color: var(--text-primary);
+      border: 1px solid var(--border-subtle);
+      padding: 0.35rem 0.75rem;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .lab-btn:hover {
+      border-color: var(--border-strong);
+      background: var(--border-subtle);
+    }
+
+    .lab-btn.active {
+      background: var(--accent-primary);
+      color: #000;
+      border-color: var(--accent-primary);
+      font-weight: 700;
+    }
+
+    /* Reduced Motion Implementation */
+    body.reduced-motion * {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      transform: none !important;
+      opacity: 1 !important;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        transform: none !important;
+        opacity: 1 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Procedural Tactile Film Grain SVG -->
+  <svg class="film-grain" xmlns="http://www.w3.org/2000/svg">
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch" />
+      <feColorMatrix type="saturate" values="0" />
+    </filter>
+    <rect width="100%" height="100%" filter="url(#grain)" />
+  </svg>
+
+  <!-- Interactive Coordinate & Particle Lattice Canvas -->
+  <canvas id="ambient-canvas"></canvas>
+
+  <!-- Header -->
+  <header>
+    <div class="brand-mark">
+      MAHARDIKA RAFA
+      <span class="brand-badge">ARCHITECT</span>
+    </div>
+    <div class="system-status">
+      <div class="status-dot"></div>
+      <span>SYS_READY // JAKARTA GMT+7</span>
+    </div>
+  </header>
+
+  <!-- Hero Container -->
+  <main class="hero-container">
+    <div class="eyebrow-ribbon" id="eyebrow">
+      <span>[ 00 ]</span>
+      <span>DIRECTION SPECIFICATION // INTERACTIVE LAB</span>
+    </div>
+
+    <div class="headline-wrap">
+      <h1 class="hero-title">
+        <span class="title-line"><span class="reveal-text">MAHARDIKA</span></span>
+        <span class="title-line"><span class="reveal-text">RAFA</span></span>
+      </h1>
+    </div>
+
+    <div class="hero-subheadline" id="subheadline">
+      Systems Architect & Creative Full-Stack Engineer
+    </div>
+
+    <p class="hero-statement" id="statement">
+      Architecting high-throughput distributed systems & composing cinematic, tactile web interfaces with mathematical precision and uncompromising performance.
+    </p>
+
+    <div class="cta-group" id="ctas">
+      <a href="#work" class="btn-magnetic btn-primary" id="btn-work">
+        <span>View Selected Work</span>
+        <span>→</span>
+      </a>
+      <a href="#contact" class="btn-magnetic btn-secondary" id="btn-contact">
+        <span>Initiate Dialogue</span>
+        <span>↗</span>
+      </a>
+    </div>
+
+    <div class="scroll-cue">
+      <span>EXPLORE</span>
+      <div class="scroll-line"></div>
+    </div>
+  </main>
+
+  <!-- Interactive Lab Control Console -->
+  <aside class="lab-panel">
+    <div class="lab-title">
+      <span>Motion Lab</span>
+      <span id="fps-display">60 FPS</span>
+    </div>
+    <div class="lab-controls">
+      <button class="lab-btn" id="btn-toggle-motion">Simulate Reduced Motion: OFF</button>
+      <button class="lab-btn" id="btn-toggle-theme">Theme: Dark</button>
+      <button class="lab-btn" id="btn-replay">Replay Entrance</button>
+    </div>
+  </aside>
+
+  <script>
+    // --- Canvas Particle Lattice Physics ---
+    const canvas = document.getElementById('ambient-canvas');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+    let particles = [];
+    const particleCount = 42;
+    let mouse = { x: -1000, y: -1000, targetX: -1000, targetY: -1000 };
+
+    function resize() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+      initParticles();
+    }
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.baseX = this.x;
+        this.baseY = this.y;
+        this.vx = (Math.random() - 0.5) * 0.4;
+        this.vy = (Math.random() - 0.5) * 0.4;
+        this.radius = Math.random() * 1.5 + 1;
+      }
+
+      update() {
+        // Base drift
+        this.x += this.vx;
+        this.y += this.vy;
+
+        if (this.x < 0 || this.x > width) this.vx *= -1;
+        if (this.y < 0 || this.y > height) this.vy *= -1;
+
+        // Mouse displacement
+        const dx = mouse.x - this.x;
+        const dy = mouse.y - this.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        const maxDist = 180;
+
+        if (dist < maxDist) {
+          const force = (maxDist - dist) / maxDist;
+          const angle = Math.atan2(dy, dx);
+          this.x -= Math.cos(angle) * force * 5;
+          this.y -= Math.sin(angle) * force * 5;
+        }
+      }
+
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        const isDark = document.documentElement.classList.contains('dark');
+        ctx.fillStyle = isDark ? 'rgba(255, 255, 255, 0.35)' : 'rgba(0, 0, 0, 0.25)';
+        ctx.fill();
+      }
+    }
+
+    function initParticles() {
+      particles = [];
+      for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+      }
+    }
+
+    window.addEventListener('resize', resize);
+    window.addEventListener('mousemove', (e) => {
+      mouse.targetX = e.clientX;
+      mouse.targetY = e.clientY;
+    });
+
+    // Ambient Loop & FPS
+    let lastTime = performance.now();
+    let frameCount = 0;
+    let fps = 60;
+    const fpsDisplay = document.getElementById('fps-display');
+
+    function animate(currentTime) {
+      // Smooth mouse interpolation
+      mouse.x += (mouse.targetX - mouse.x) * 0.15;
+      mouse.y += (mouse.targetY - mouse.y) * 0.15;
+
+      ctx.clearRect(0, 0, width, height);
+
+      // Draw subtle lattice lines between close particles
+      const isDark = document.documentElement.classList.contains('dark');
+      const maxConnectDist = 140;
+
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < maxConnectDist) {
+            const alpha = (1 - dist / maxConnectDist) * (isDark ? 0.08 : 0.05);
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = isDark ? `rgba(255, 255, 255, ${alpha})` : `rgba(0, 0, 0, ${alpha})`;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+        }
+      }
+
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+
+      // FPS tracking
+      frameCount++;
+      if (currentTime - lastTime >= 1000) {
+        fps = frameCount;
+        frameCount = 0;
+        lastTime = currentTime;
+        fpsDisplay.textContent = `${fps} FPS`;
+      }
+
+      requestAnimationFrame(animate);
+    }
+
+    resize();
+    requestAnimationFrame(animate);
+
+    // --- Magnetic Button Interaction Physics ---
+    const magneticBtns = document.querySelectorAll('.btn-magnetic');
+
+    magneticBtns.forEach(btn => {
+      btn.addEventListener('mousemove', (e) => {
+        if (document.body.classList.contains('reduced-motion')) return;
+        const rect = btn.getBoundingClientRect();
+        const btnCenterX = rect.left + rect.width / 2;
+        const btnCenterY = rect.top + rect.height / 2;
+        const deltaX = (e.clientX - btnCenterX) * 0.32;
+        const deltaY = (e.clientY - btnCenterY) * 0.32;
+        btn.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
+      });
+
+      btn.addEventListener('mouseleave', () => {
+        btn.style.transform = 'translate(0px, 0px)';
+      });
+    });
+
+    // --- Staggered Entrance Orchestration ---
+    function triggerEntrance() {
+      if (document.body.classList.contains('reduced-motion')) {
+        document.getElementById('eyebrow').style.opacity = '1';
+        document.getElementById('eyebrow').style.transform = 'none';
+        document.querySelectorAll('.reveal-text').forEach(el => {
+          el.style.transform = 'none';
+          el.style.opacity = '1';
+        });
+        document.getElementById('subheadline').style.opacity = '1';
+        document.getElementById('subheadline').style.transform = 'none';
+        document.getElementById('statement').style.opacity = '1';
+        document.getElementById('statement').style.transform = 'none';
+        document.getElementById('ctas').style.opacity = '1';
+        document.getElementById('ctas').style.transform = 'none';
+        return;
+      }
+
+      // Reset
+      document.getElementById('eyebrow').style.opacity = '0';
+      document.getElementById('eyebrow').style.transform = 'translateY(-12px)';
+      document.querySelectorAll('.reveal-text').forEach(el => {
+        el.style.transform = 'translateY(115%)';
+        el.style.opacity = '0';
+      });
+      document.getElementById('subheadline').style.opacity = '0';
+      document.getElementById('subheadline').style.transform = 'translateY(16px)';
+      document.getElementById('statement').style.opacity = '0';
+      document.getElementById('statement').style.transform = 'translateY(20px)';
+      document.getElementById('ctas').style.opacity = '0';
+      document.getElementById('ctas').style.transform = 'translateY(20px)';
+
+      // Choreographed Entry
+      setTimeout(() => {
+        document.getElementById('eyebrow').style.opacity = '1';
+        document.getElementById('eyebrow').style.transform = 'translateY(0)';
+      }, 100);
+
+      const revealTexts = document.querySelectorAll('.reveal-text');
+      revealTexts.forEach((el, index) => {
+        setTimeout(() => {
+          el.style.transform = 'translateY(0)';
+          el.style.opacity = '1';
+        }, 220 + index * 100);
+      });
+
+      setTimeout(() => {
+        document.getElementById('subheadline').style.opacity = '1';
+        document.getElementById('subheadline').style.transform = 'translateY(0)';
+      }, 480);
+
+      setTimeout(() => {
+        document.getElementById('statement').style.opacity = '1';
+        document.getElementById('statement').style.transform = 'translateY(0)';
+      }, 640);
+
+      setTimeout(() => {
+        document.getElementById('ctas').style.opacity = '1';
+        document.getElementById('ctas').style.transform = 'translateY(0)';
+      }, 820);
+    }
+
+    triggerEntrance();
+
+    // --- Lab Panel Controls ---
+    const btnReduced = document.getElementById('btn-toggle-motion');
+    btnReduced.addEventListener('click', () => {
+      document.body.classList.toggle('reduced-motion');
+      const isReduced = document.body.classList.contains('reduced-motion');
+      btnReduced.textContent = `Simulate Reduced Motion: ${isReduced ? 'ON' : 'OFF'}`;
+      btnReduced.classList.toggle('active', isReduced);
+      if (isReduced) {
+        triggerEntrance();
+      }
+    });
+
+    const btnTheme = document.getElementById('btn-toggle-theme');
+    btnTheme.addEventListener('click', () => {
+      const html = document.documentElement;
+      if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        html.classList.add('light');
+        btnTheme.textContent = 'Theme: Light';
+      } else {
+        html.classList.remove('light');
+        html.classList.add('dark');
+        btnTheme.textContent = 'Theme: Dark';
+      }
+    });
+
+    const btnReplay = document.getElementById('btn-replay');
+    btnReplay.addEventListener('click', () => {
+      triggerEntrance();
+    });
+  </script>
+</body>
+</html>

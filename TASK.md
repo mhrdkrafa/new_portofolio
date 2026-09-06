@@ -5,7 +5,7 @@
 - [x] Create visual references/moodboard.
 - [x] Define hero concept.
 - [x] Decide light/dark/default mode.
-- [ ] Prototype motion language.
+- [x] Prototype motion language.
 - [ ] Define 3D/WebGL usage boundary.
 
 ## Phase 1 — Design System
