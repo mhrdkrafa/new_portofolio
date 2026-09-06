@@ -34,7 +34,7 @@
 - [x] Social links.
 - [x] Projects.
 - [x] Project media.
-- [ ] Technologies.
+- [x] Technologies.
 - [ ] Experience.
 - [ ] Education.
 - [ ] Skills.

@@ -76,14 +76,39 @@ class ProjectSeeder extends Seeder
             ]
         );
 
-        $ledgerProject->links()->updateOrCreate(
-            ['type' => 'github'],
-            [
-                'label' => 'Repository',
-                'url' => 'https://github.com/mhrdkrafa/core-ledger',
-                'sort_order' => 2,
-            ]
+        $techLaravel = \App\Models\ProjectTechnology::firstOrCreate(
+            ['slug' => 'laravel'],
+            ['name' => 'Laravel', 'icon_key' => 'laravel']
         );
+        $techNext = \App\Models\ProjectTechnology::firstOrCreate(
+            ['slug' => 'nextjs'],
+            ['name' => 'Next.js', 'icon_key' => 'nextjs']
+        );
+        $techRedis = \App\Models\ProjectTechnology::firstOrCreate(
+            ['slug' => 'redis'],
+            ['name' => 'Redis', 'icon_key' => 'redis']
+        );
+        $techMysql = \App\Models\ProjectTechnology::firstOrCreate(
+            ['slug' => 'mysql'],
+            ['name' => 'MySQL', 'icon_key' => 'mysql']
+        );
+        $techGsap = \App\Models\ProjectTechnology::firstOrCreate(
+            ['slug' => 'gsap'],
+            ['name' => 'GSAP', 'icon_key' => 'gsap']
+        );
+
+        $ledgerProject->technologies()->syncWithoutDetaching([
+            $techLaravel->id,
+            $techRedis->id,
+            $techMysql->id,
+        ]);
+
+        $portfolioProject = Project::where('slug', 'cinematic-digital-portfolio')->first();
+        $portfolioProject->technologies()->syncWithoutDetaching([
+            $techNext->id,
+            $techLaravel->id,
+            $techGsap->id,
+        ]);
 
         Project::updateOrCreate(
             ['slug' => 'cinematic-digital-portfolio'],
