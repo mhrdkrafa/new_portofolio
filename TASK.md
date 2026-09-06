@@ -43,7 +43,7 @@
 - [x] Articles/tags.
 - [x] Contact messages.
 - [x] Homepage sections.
-- [ ] Navigation.
+- [x] Navigation.
 - [ ] Settings.
 - [ ] Theme presets.
 - [ ] SEO pages.
