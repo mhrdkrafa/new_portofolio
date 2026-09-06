@@ -96,4 +96,12 @@ class FilamentAdminResourcesTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee('Architecting Low-Latency Headless Portfolios');
     }
+
+    public function test_admin_can_render_homepage_sections_resource_page(): void
+    {
+        $response = $this->actingAs($this->admin)->get('/admin/homepage-sections');
+
+        $response->assertStatus(200);
+        $response->assertSee('hero');
+    }
 }

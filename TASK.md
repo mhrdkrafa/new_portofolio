@@ -60,7 +60,7 @@
 - [x] Services.
 - [x] Testimonials.
 - [x] Articles.
-- [ ] Homepage section manager.
+- [x] Homepage section manager.
 - [ ] Navigation.
 - [ ] SEO.
 - [ ] Theme presets.
