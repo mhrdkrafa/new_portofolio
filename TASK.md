@@ -26,7 +26,7 @@
 - [x] Install Sanctum.
 - [x] Install Filament 5.
 - [x] Configure queues/scheduler.
-- [ ] Configure tests.
+- [x] Configure tests.
 - [ ] Create admin user.
 
 ## Phase 3 — Database
