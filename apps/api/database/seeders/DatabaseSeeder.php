@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             HomepageSectionSeeder::class,
             NavigationItemSeeder::class,
             WebsiteSettingSeeder::class,
+            ThemePresetSeeder::class,
         ]);
     }
 }

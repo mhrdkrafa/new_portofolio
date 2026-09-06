@@ -45,7 +45,7 @@
 - [x] Homepage sections.
 - [x] Navigation.
 - [x] Settings.
-- [ ] Theme presets.
+- [x] Theme presets.
 - [ ] SEO pages.
 - [ ] Audit logs.
 
