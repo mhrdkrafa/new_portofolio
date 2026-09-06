@@ -1,0 +1,57 @@
+# Dependencies
+node_modules/
+vendor/
+apps/*/node_modules/
+apps/*/vendor/
+
+# Environments & Secrets
+.env
+.env.backup
+.env.production
+apps/*/.env
+apps/*/.env.backup
+apps/*/.env.production
+
+# Build Outputs
+.next/
+out/
+dist/
+build/
+apps/*/.next/
+apps/*/out/
+apps/*/dist/
+apps/*/build/
+
+# Laravel Storage & Cache
+apps/api/storage/*.key
+apps/api/storage/app/*
+!apps/api/storage/app/.gitignore
+apps/api/storage/framework/cache/*
+!apps/api/storage/framework/cache/.gitignore
+apps/api/storage/framework/sessions/*
+!apps/api/storage/framework/sessions/.gitignore
+apps/api/storage/framework/views/*
+!apps/api/storage/framework/views/.gitignore
+apps/api/storage/logs/*
+!apps/api/storage/logs/.gitignore
+apps/api/bootstrap/cache/*
+!apps/api/bootstrap/cache/.gitignore
+apps/api/public/storage
+apps/api/database/*.sqlite
+apps/api/database/*.sqlite-journal
+
+# Testing & Diagnostics
+.phpunit.result.cache
+.phpunit.cache/
+coverage/
+
+# OS & Editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

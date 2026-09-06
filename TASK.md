@@ -19,7 +19,7 @@
 - [x] Define reusable components.
 
 ## Phase 2 — Backend
-- [ ] Create Laravel 13 API.
+- [x] Create Laravel 13 API.
 - [ ] Configure MySQL.
 - [ ] Configure Redis.
 - [ ] Configure storage.
