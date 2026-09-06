@@ -24,7 +24,7 @@
 - [x] Configure Redis.
 - [x] Configure storage.
 - [x] Install Sanctum.
-- [ ] Install Filament 5.
+- [x] Install Filament 5.
 - [ ] Configure queues/scheduler.
 - [ ] Configure tests.
 - [ ] Create admin user.
