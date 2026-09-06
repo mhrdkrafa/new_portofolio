@@ -103,14 +103,7 @@ class ProjectSeeder extends Seeder
             $techMysql->id,
         ]);
 
-        $portfolioProject = Project::where('slug', 'cinematic-digital-portfolio')->first();
-        $portfolioProject->technologies()->syncWithoutDetaching([
-            $techNext->id,
-            $techLaravel->id,
-            $techGsap->id,
-        ]);
-
-        Project::updateOrCreate(
+        $portfolioProject = Project::updateOrCreate(
             ['slug' => 'cinematic-digital-portfolio'],
             [
                 'category_id' => $catCreative->id,
@@ -130,5 +123,11 @@ class ProjectSeeder extends Seeder
                 'seo_description' => 'Explore the interactive digital identity and systems engineering case studies of Mahardika Rafa.',
             ]
         );
+
+        $portfolioProject->technologies()->syncWithoutDetaching([
+            $techNext->id,
+            $techLaravel->id,
+            $techGsap->id,
+        ]);
     }
 }
