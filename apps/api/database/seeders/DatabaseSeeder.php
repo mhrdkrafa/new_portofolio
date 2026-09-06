@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
             NavigationItemSeeder::class,
             WebsiteSettingSeeder::class,
             ThemePresetSeeder::class,
+            SeoPageSeeder::class,
         ]);
     }
 }

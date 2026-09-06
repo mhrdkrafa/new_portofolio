@@ -46,7 +46,7 @@
 - [x] Navigation.
 - [x] Settings.
 - [x] Theme presets.
-- [ ] SEO pages.
+- [x] SEO pages.
 - [ ] Audit logs.
 
 ## Phase 4 — Admin CMS
