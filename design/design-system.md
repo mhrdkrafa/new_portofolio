@@ -150,4 +150,20 @@ The spacing system relies on an 8pt modular grid with 4pt half-steps for micro-c
 - `pad-gutter`: `clamp(1.25rem, 4vw, 3.5rem)` (Edge safety padding)
 - `section-gap`: `clamp(5rem, 10vw, 8.5rem)` (Standard section spacing)
 
+---
+
+## 4. Border Radius System
+
+To maintain architectural precision and eliminate "bubbly SaaS template" aesthetics, the design system enforces strict, disciplined corner radii (maximum 8px for containers).
+
+| Token | Value | Applied Elements | Architectural Intent |
+| :--- | :--- | :--- | :--- |
+| `radius-none` | `0px` | Full-bleed banners, table rows, structural dividers | Pure brutalist baseline |
+| `radius-xs` | `2px` | Progress bars, technical hairline tabs, micro-tags | Precision accent |
+| `radius-sm` | `4px` | Monospace badges, code chips, inline tags, form inputs | Structural crispness |
+| `radius-md` | `6px` | Interactive buttons, dropdown menus, flyout tooltips | Tactile ergonomic edge |
+| `radius-lg` | `8px` | Project showcase cards, article panels, modal sheets | Maximum allowable card curve |
+| `radius-full` | `9999px` | Live status dots, circular avatar clips | Strictly for circular elements |
+
+
 

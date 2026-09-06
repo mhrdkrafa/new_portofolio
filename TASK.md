@@ -12,7 +12,7 @@
 - [x] Define typography.
 - [x] Define colors.
 - [x] Define spacing.
-- [ ] Define radius.
+- [x] Define radius.
 - [ ] Define shadows.
 - [ ] Define motion tokens.
 - [ ] Define reduced-motion behavior.
