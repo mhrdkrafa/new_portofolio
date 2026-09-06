@@ -56,7 +56,7 @@
 - [x] Media.
 - [x] Experience.
 - [x] Education.
-- [ ] Skills.
+- [x] Skills.
 - [ ] Services.
 - [ ] Testimonials.
 - [ ] Articles.

@@ -64,4 +64,12 @@ class FilamentAdminResourcesTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee('Bandung Institute of Technology');
     }
+
+    public function test_admin_can_render_skills_resource_page(): void
+    {
+        $response = $this->actingAs($this->admin)->get('/admin/skills');
+
+        $response->assertStatus(200);
+        $response->assertSee('Distributed Architecture');
+    }
 }
