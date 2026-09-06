@@ -41,4 +41,11 @@ class FilamentAdminResourcesTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    public function test_admin_can_render_project_media_resource_page(): void
+    {
+        $response = $this->actingAs($this->admin)->get('/admin/project-media');
+
+        $response->assertStatus(200);
+    }
 }

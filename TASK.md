@@ -53,7 +53,7 @@
 - [x] Dashboard.
 - [x] Profile.
 - [x] Projects.
-- [ ] Media.
+- [x] Media.
 - [ ] Experience.
 - [ ] Education.
 - [ ] Skills.
