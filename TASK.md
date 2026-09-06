@@ -25,7 +25,7 @@
 - [x] Configure storage.
 - [x] Install Sanctum.
 - [x] Install Filament 5.
-- [ ] Configure queues/scheduler.
+- [x] Configure queues/scheduler.
 - [ ] Configure tests.
 - [ ] Create admin user.
 
