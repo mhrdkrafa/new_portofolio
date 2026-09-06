@@ -15,7 +15,7 @@
 - [x] Define radius.
 - [x] Define shadows.
 - [x] Define motion tokens.
-- [ ] Define reduced-motion behavior.
+- [x] Define reduced-motion behavior.
 - [ ] Define reusable components.
 
 ## Phase 2 — Backend

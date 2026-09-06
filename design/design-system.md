@@ -215,6 +215,37 @@ Centralized motion timing and easing profiles ensure rhythmic coherence between 
 - `stagger-card`: `0.12s` (Project showcase cards entry)
 - `scrub-responsive`: `1.0s` (ScrollTrigger parallax inertia)
 
+---
+
+## 7. Reduced-Motion Behavior Specification
+
+The portfolio treats accessibility as an absolute priority. When `prefers-reduced-motion: reduce` is enabled:
+
+### 7.1 Universal CSS Reset Rules
+
+```css
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    transform: none !important;
+    opacity: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
+```
+
+### 7.2 GSAP & Interaction Contract
+
+1. **Zero Content Gating**: No text or project showcase will ever be hidden behind a `clip-path` or `opacity: 0` while waiting for an animation timeline.
+2. **Horizontal Pins to Native Stacking**: Any ScrollTrigger pinned horizontal reels automatically transform into vertical standard stacking.
+3. **Magnetic Disablement**: Cursor gravitation vectors are zeroed; buttons remain static on hover with standard high-contrast focus rings.
+4. **Canvas / 3D Freezing**: Canvas particle loops and Three.js renderers stop `requestAnimationFrame` and render a single static frame or switch to the pure CSS ambient background.
+
+
 
 
 
