@@ -9,7 +9,7 @@
 - [x] Define 3D/WebGL usage boundary.
 
 ## Phase 1 — Design System
-- [ ] Define typography.
+- [x] Define typography.
 - [ ] Define colors.
 - [ ] Define spacing.
 - [ ] Define radius.
