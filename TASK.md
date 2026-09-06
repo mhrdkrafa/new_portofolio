@@ -41,7 +41,7 @@
 - [x] Services.
 - [x] Testimonials.
 - [x] Articles/tags.
-- [ ] Contact messages.
+- [x] Contact messages.
 - [ ] Homepage sections.
 - [ ] Navigation.
 - [ ] Settings.
