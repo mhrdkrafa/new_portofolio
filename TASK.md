@@ -54,7 +54,7 @@
 - [x] Profile.
 - [x] Projects.
 - [x] Media.
-- [ ] Experience.
+- [x] Experience.
 - [ ] Education.
 - [ ] Skills.
 - [ ] Services.

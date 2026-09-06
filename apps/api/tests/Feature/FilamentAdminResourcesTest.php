@@ -48,4 +48,12 @@ class FilamentAdminResourcesTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    public function test_admin_can_render_experiences_resource_page(): void
+    {
+        $response = $this->actingAs($this->admin)->get('/admin/experiences');
+
+        $response->assertStatus(200);
+        $response->assertSee('Apex Systems');
+    }
 }
