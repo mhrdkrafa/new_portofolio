@@ -3,7 +3,7 @@
 ## Phase 0 — Direction
 - [x] Define personal brand direction.
 - [x] Create visual references/moodboard.
-- [ ] Define hero concept.
+- [x] Define hero concept.
 - [ ] Decide light/dark/default mode.
 - [ ] Prototype motion language.
 - [ ] Define 3D/WebGL usage boundary.
