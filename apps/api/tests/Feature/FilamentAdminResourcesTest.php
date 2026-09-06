@@ -56,4 +56,12 @@ class FilamentAdminResourcesTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee('Apex Systems');
     }
+
+    public function test_admin_can_render_education_resource_page(): void
+    {
+        $response = $this->actingAs($this->admin)->get('/admin/education');
+
+        $response->assertStatus(200);
+        $response->assertSee('Bandung Institute of Technology');
+    }
 }

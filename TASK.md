@@ -55,7 +55,7 @@
 - [x] Projects.
 - [x] Media.
 - [x] Experience.
-- [ ] Education.
+- [x] Education.
 - [ ] Skills.
 - [ ] Services.
 - [ ] Testimonials.
