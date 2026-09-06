@@ -22,7 +22,7 @@
 - [x] Create Laravel 13 API.
 - [x] Configure MySQL.
 - [x] Configure Redis.
-- [ ] Configure storage.
+- [x] Configure storage.
 - [ ] Install Sanctum.
 - [ ] Install Filament 5.
 - [ ] Configure queues/scheduler.
