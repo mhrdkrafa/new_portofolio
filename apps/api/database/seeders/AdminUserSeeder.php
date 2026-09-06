@@ -71,5 +71,33 @@ class AdminUserSeeder extends Seeder
                 'is_visible' => true,
             ]
         );
+
+        $profile->experiences()->updateOrCreate(
+            ['company_name' => 'Apex Systems & Distributed Lab'],
+            [
+                'position' => 'Principal Systems Architect',
+                'employment_type' => 'Full-time',
+                'location' => 'Jakarta / Remote',
+                'start_date' => '2024-01-01',
+                'end_date' => null,
+                'description' => 'Architected high-throughput ledger infrastructure, stream processing pipelines, and resilient microservices.',
+                'is_current' => true,
+                'sort_order' => 1,
+            ]
+        );
+
+        $profile->experiences()->updateOrCreate(
+            ['company_name' => 'Kinetic Digital Studio'],
+            [
+                'position' => 'Lead Full-Stack Creative Engineer',
+                'employment_type' => 'Full-time',
+                'location' => 'Jakarta, ID',
+                'start_date' => '2022-03-01',
+                'end_date' => '2023-12-31',
+                'description' => 'Spearheaded bespoke web experiences, interactive 3D visualizations, and API orchestration.',
+                'is_current' => false,
+                'sort_order' => 2,
+            ]
+        );
     }
 }

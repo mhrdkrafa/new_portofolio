@@ -35,7 +35,7 @@
 - [x] Projects.
 - [x] Project media.
 - [x] Technologies.
-- [ ] Experience.
+- [x] Experience.
 - [ ] Education.
 - [ ] Skills.
 - [ ] Services.
