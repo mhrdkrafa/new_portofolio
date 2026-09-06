@@ -36,5 +36,40 @@ class AdminUserSeeder extends Seeder
                 'availability_status' => 'available',
             ]
         );
+
+        $profile = $user->profile;
+
+        $profile->socialLinks()->updateOrCreate(
+            ['platform' => 'github'],
+            [
+                'label' => 'GitHub',
+                'url' => 'https://github.com/mhrdkrafa',
+                'icon_key' => 'github',
+                'sort_order' => 1,
+                'is_visible' => true,
+            ]
+        );
+
+        $profile->socialLinks()->updateOrCreate(
+            ['platform' => 'linkedin'],
+            [
+                'label' => 'LinkedIn',
+                'url' => 'https://linkedin.com/in/mhrdkrafa',
+                'icon_key' => 'linkedin',
+                'sort_order' => 2,
+                'is_visible' => true,
+            ]
+        );
+
+        $profile->socialLinks()->updateOrCreate(
+            ['platform' => 'email'],
+            [
+                'label' => 'Email',
+                'url' => 'mailto:contact@mahardika.dev',
+                'icon_key' => 'mail',
+                'sort_order' => 3,
+                'is_visible' => true,
+            ]
+        );
     }
 }

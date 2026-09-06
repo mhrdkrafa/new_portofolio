@@ -31,7 +31,7 @@
 
 ## Phase 3 — Database
 - [x] Profile.
-- [ ] Social links.
+- [x] Social links.
 - [ ] Projects.
 - [ ] Project media.
 - [ ] Technologies.
