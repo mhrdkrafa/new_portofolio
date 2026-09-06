@@ -30,7 +30,7 @@
 - [x] Create admin user.
 
 ## Phase 3 — Database
-- [ ] Profile.
+- [x] Profile.
 - [ ] Social links.
 - [ ] Projects.
 - [ ] Project media.
