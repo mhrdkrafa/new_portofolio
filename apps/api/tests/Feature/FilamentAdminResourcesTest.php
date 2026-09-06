@@ -120,4 +120,12 @@ class FilamentAdminResourcesTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee('/projects');
     }
+
+    public function test_admin_can_render_theme_presets_resource_page(): void
+    {
+        $response = $this->actingAs($this->admin)->get('/admin/theme-presets');
+
+        $response->assertStatus(200);
+        $response->assertSee('Obsidian Dark');
+    }
 }

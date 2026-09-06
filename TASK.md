@@ -63,7 +63,7 @@
 - [x] Homepage section manager.
 - [x] Navigation.
 - [x] SEO.
-- [ ] Theme presets.
+- [x] Theme presets.
 - [ ] Settings.
 - [ ] Contact inbox.
 - [ ] Audit logs.
