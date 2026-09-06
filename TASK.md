@@ -58,7 +58,7 @@
 - [x] Education.
 - [x] Skills.
 - [x] Services.
-- [ ] Testimonials.
+- [x] Testimonials.
 - [ ] Articles.
 - [ ] Homepage section manager.
 - [ ] Navigation.

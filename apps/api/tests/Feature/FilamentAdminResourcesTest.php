@@ -80,4 +80,12 @@ class FilamentAdminResourcesTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee('Systems Architecture');
     }
+
+    public function test_admin_can_render_testimonials_resource_page(): void
+    {
+        $response = $this->actingAs($this->admin)->get('/admin/testimonials');
+
+        $response->assertStatus(200);
+        $response->assertSee('Alexander Vance');
+    }
 }
