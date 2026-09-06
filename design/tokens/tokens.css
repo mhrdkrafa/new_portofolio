@@ -50,4 +50,59 @@
   --tracking-wide: 0.05em;
   --tracking-wider: 0.08em;
   --tracking-widest: 0.12em;
+
+  /* ==========================================================================
+     Color Tokens — Obsidian Dark (Default)
+     ========================================================================== */
+  --bg-canvas: #0A0A0C;
+  --bg-surface: #121216;
+  --bg-surface-hover: #18181F;
+  --bg-inset: #0E0E12;
+  --bg-glass: rgba(18, 18, 22, 0.75);
+
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-medium: rgba(255, 255, 255, 0.14);
+  --border-strong: rgba(255, 255, 255, 0.28);
+
+  --text-primary: #EDEDED;
+  --text-secondary: #A1A1AA;
+  --text-muted: #71717A;
+  --text-ghost: #52525B;
+
+  --accent-primary: #00F0FF;
+  --accent-primary-hover: #00C4D4;
+  --accent-glow: rgba(0, 240, 255, 0.18);
+
+  --status-live: #10B981;
+  --status-live-glow: rgba(16, 185, 129, 0.3);
+  --status-alert: #EF4444;
+}
+
+/* ==========================================================================
+   Color Tokens — Gallery Light Theme
+   ========================================================================== */
+[data-theme="light"],
+html.light {
+  --bg-canvas: #F8F9FA;
+  --bg-surface: #FFFFFF;
+  --bg-surface-hover: #F1F3F5;
+  --bg-inset: #ECEEF1;
+  --bg-glass: rgba(255, 255, 255, 0.85);
+
+  --border-subtle: rgba(0, 0, 0, 0.08);
+  --border-medium: rgba(0, 0, 0, 0.16);
+  --border-strong: rgba(0, 0, 0, 0.35);
+
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-muted: #64748B;
+  --text-ghost: #94A3B8;
+
+  --accent-primary: #0284C7;
+  --accent-primary-hover: #0369A1;
+  --accent-glow: rgba(2, 132, 199, 0.18);
+
+  --status-live: #059669;
+  --status-live-glow: rgba(5, 150, 105, 0.25);
+  --status-alert: #DC2626;
 }
