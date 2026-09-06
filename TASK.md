@@ -20,7 +20,7 @@
 
 ## Phase 2 — Backend
 - [x] Create Laravel 13 API.
-- [ ] Configure MySQL.
+- [x] Configure MySQL.
 - [ ] Configure Redis.
 - [ ] Configure storage.
 - [ ] Install Sanctum.
