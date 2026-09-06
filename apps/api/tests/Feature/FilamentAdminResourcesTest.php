@@ -136,4 +136,12 @@ class FilamentAdminResourcesTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee('site_title');
     }
+
+    public function test_admin_can_render_contact_messages_resource_page(): void
+    {
+        $response = $this->actingAs($this->admin)->get('/admin/contact-messages');
+
+        $response->assertStatus(200);
+        $response->assertSee('Elena Rostova');
+    }
 }

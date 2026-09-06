@@ -65,7 +65,7 @@
 - [x] SEO.
 - [x] Theme presets.
 - [x] Settings.
-- [ ] Contact inbox.
+- [x] Contact inbox.
 - [ ] Audit logs.
 
 ## Phase 5 — Next.js
