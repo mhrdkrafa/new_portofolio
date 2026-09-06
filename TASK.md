@@ -36,7 +36,7 @@
 - [x] Project media.
 - [x] Technologies.
 - [x] Experience.
-- [ ] Education.
+- [x] Education.
 - [ ] Skills.
 - [ ] Services.
 - [ ] Testimonials.

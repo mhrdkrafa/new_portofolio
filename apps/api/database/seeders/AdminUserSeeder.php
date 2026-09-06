@@ -99,5 +99,17 @@ class AdminUserSeeder extends Seeder
                 'sort_order' => 2,
             ]
         );
+
+        $profile->education()->updateOrCreate(
+            ['institution' => 'Bandung Institute of Technology (ITB)'],
+            [
+                'degree' => 'Bachelor of Science',
+                'field_of_study' => 'Computer Science & Software Engineering',
+                'start_date' => '2018-08-01',
+                'end_date' => '2022-07-31',
+                'description' => 'Focused on distributed algorithms, formal verification, systems architecture, and database theory.',
+                'sort_order' => 1,
+            ]
+        );
     }
 }
