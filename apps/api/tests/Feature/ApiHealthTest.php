@@ -59,4 +59,19 @@ class ApiHealthTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    /**
+     * Test that authenticated admin user can render Filament dashboard.
+     */
+    public function test_authenticated_admin_can_access_filament_dashboard_with_widgets(): void
+    {
+        $user = \App\Models\User::factory()->create();
+
+        $response = $this->actingAs($user)->get('/admin');
+
+        $response->assertStatus(200);
+        $response->assertSee('Mahardika Rafa CMS');
+        $response->assertSee('Selected Projects');
+        $response->assertSee('Recent Inquiries');
+    }
 }

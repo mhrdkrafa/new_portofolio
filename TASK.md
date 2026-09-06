@@ -50,7 +50,7 @@
 - [x] Audit logs.
 
 ## Phase 4 — Admin CMS
-- [ ] Dashboard.
+- [x] Dashboard.
 - [ ] Profile.
 - [ ] Projects.
 - [ ] Media.
