@@ -32,7 +32,7 @@
 ## Phase 3 — Database
 - [x] Profile.
 - [x] Social links.
-- [ ] Projects.
+- [x] Projects.
 - [ ] Project media.
 - [ ] Technologies.
 - [ ] Experience.
