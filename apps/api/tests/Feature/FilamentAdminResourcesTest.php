@@ -144,4 +144,12 @@ class FilamentAdminResourcesTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee('Elena Rostova');
     }
+
+    public function test_admin_can_render_audit_logs_resource_page(): void
+    {
+        $response = $this->actingAs($this->admin)->get('/admin/audit-logs');
+
+        $response->assertStatus(200);
+        $response->assertSee('initialize_system');
+    }
 }

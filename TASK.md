@@ -66,7 +66,7 @@
 - [x] Theme presets.
 - [x] Settings.
 - [x] Contact inbox.
-- [ ] Audit logs.
+- [x] Audit logs.
 
 ## Phase 5 — Next.js
 - [ ] Create Next.js 16 App Router app.
