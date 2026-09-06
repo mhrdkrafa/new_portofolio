@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             ContactMessageSeeder::class,
             HomepageSectionSeeder::class,
             NavigationItemSeeder::class,
+            WebsiteSettingSeeder::class,
         ]);
     }
 }

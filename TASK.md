@@ -44,7 +44,7 @@
 - [x] Contact messages.
 - [x] Homepage sections.
 - [x] Navigation.
-- [ ] Settings.
+- [x] Settings.
 - [ ] Theme presets.
 - [ ] SEO pages.
 - [ ] Audit logs.
