@@ -4,7 +4,7 @@
 - [x] Define personal brand direction.
 - [x] Create visual references/moodboard.
 - [x] Define hero concept.
-- [ ] Decide light/dark/default mode.
+- [x] Decide light/dark/default mode.
 - [ ] Prototype motion language.
 - [ ] Define 3D/WebGL usage boundary.
 
