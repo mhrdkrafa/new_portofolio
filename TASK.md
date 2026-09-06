@@ -16,7 +16,7 @@
 - [x] Define shadows.
 - [x] Define motion tokens.
 - [x] Define reduced-motion behavior.
-- [ ] Define reusable components.
+- [x] Define reusable components.
 
 ## Phase 2 — Backend
 - [ ] Create Laravel 13 API.

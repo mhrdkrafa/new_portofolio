@@ -245,6 +245,53 @@ The portfolio treats accessibility as an absolute priority. When `prefers-reduce
 3. **Magnetic Disablement**: Cursor gravitation vectors are zeroed; buttons remain static on hover with standard high-contrast focus rings.
 4. **Canvas / 3D Freezing**: Canvas particle loops and Three.js renderers stop `requestAnimationFrame` and render a single static frame or switch to the pure CSS ambient background.
 
+---
+
+## 8. Reusable Component Specifications
+
+Component design is code; content is data. All components consume design tokens directly without hardcoded ad-hoc styles.
+
+### 8.1 Button Primitive (`Button.tsx`)
+- **Variants**:
+  - `primary`: Solid high-contrast surface (`--text-primary` on `--bg-canvas`), subtle shadow, tactile press.
+  - `secondary`: Ambient translucent fill (`rgba(255,255,255,0.04)`), 1px hairline border (`--border-subtle`), backdrop blur.
+  - `ghost`: Transparent, text highlight on hover.
+  - `magnetic`: Integrates spring vector calculation toward cursor coordinates.
+- **Sizes**:
+  - `sm`: Height 36px, typography `--text-body-sm`, padding `0 12px`, radius `--radius-sm` (4px).
+  - `md`: Height 44px, typography `--text-body-base`, padding `0 20px`, radius `--radius-md` (6px).
+  - `lg`: Height 52px, typography `--text-body-lg`, padding `0 28px`, radius `--radius-md` (6px).
+- **Accessibility**: Explicit `aria-label` when icon-only, visible `outline: 2px solid --accent-primary` on `:focus-visible` with 2px offset.
+
+### 8.2 Badge & Pill Primitive (`Badge.tsx`)
+- **Variants**:
+  - `status`: Pulsing green beacon (`--status-live`) + uppercase mono label.
+  - `tech`: Subtle background fill (`--bg-subtle`), 1px border, monospace typography, optional tech icon slot.
+  - `category`: Architectural label with bracket syntax: `[ DISTRIBUTED SYSTEMS ]`.
+- **Radius**: Strictly `--radius-sm` (4px).
+
+### 8.3 Project Card (`ProjectCard.tsx`)
+- **Structure**:
+  - Media Container: 16:10 aspect ratio with dark placeholder skeleton and subtle zoom on card hover.
+  - Metadata Row: Project index `01`, category badge, project year.
+  - Content Block: Project title in `--text-heading-3`, 2-line condensed brief in `--text-secondary`.
+  - Tech Stack Array: Horizontal flex list of technology pills.
+  - CTA Link: Directional arrow glyph `→` translating 4px on hover.
+
+### 8.4 Article Card (`ArticleCard.tsx`)
+- **Structure**:
+  - Metadata Header: Reading time (e.g. `5 MIN READ`) and formatted publication date in `--text-mono-badge`.
+  - Editorial Title: `--text-heading-3` with high contrast.
+  - Excerpt: 3-line clamped narrative in `--text-secondary`.
+  - Tags: Tag pills in `--bg-subtle`.
+
+### 8.5 Form Controls (`Input.tsx`, `Textarea.tsx`)
+- **Structure**:
+  - Surface: Inset background (`--bg-inset`), 1px hairline border (`--border-subtle`).
+  - Active/Focus: Border transitions to `--border-strong`, subtle cyan focus glow (`--shadow-glow-cyan`).
+  - Error: Border turns ruby red (`--status-alert`) with accessible aria error description.
+
+
 
 
 

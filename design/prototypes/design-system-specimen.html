@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Design System Specimen — Mahardika Rafa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../tokens/tokens.css">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-canvas);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      line-height: var(--leading-relaxed);
+      padding: var(--pad-gutter);
+      transition: background-color var(--duration-normal) var(--ease-quart-out), color var(--duration-normal) var(--ease-quart-out);
+    }
+
+    .container {
+      max-width: var(--container-xl);
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: var(--section-gap);
+    }
+
+    /* Floating Toolbar */
+    .top-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: var(--space-6);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .brand-title {
+      font-family: var(--font-display);
+      font-size: var(--text-heading-3);
+      font-weight: var(--font-weight-extrabold);
+      letter-spacing: var(--tracking-tight);
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
+    .controls-group {
+      display: flex;
+      gap: var(--space-2);
+    }
+
+    .tool-btn {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-primary);
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+      font-size: var(--text-mono-code);
+      cursor: pointer;
+      transition: all var(--duration-fast) ease;
+    }
+
+    .tool-btn:hover {
+      border-color: var(--border-strong);
+    }
+
+    .tool-btn.active {
+      background: var(--accent-primary);
+      color: #000;
+      font-weight: 700;
+    }
+
+    /* Section Styling */
+    .spec-section {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
+    }
+
+    .section-eyebrow {
+      font-family: var(--font-mono);
+      font-size: var(--text-eyebrow);
+      letter-spacing: var(--tracking-widest);
+      color: var(--accent-primary);
+      text-transform: uppercase;
+      font-weight: var(--font-weight-semibold);
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: var(--text-heading-2);
+      font-weight: var(--font-weight-bold);
+      letter-spacing: var(--tracking-tight);
+    }
+
+    /* Specimen Grids */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: var(--space-6);
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--space-4);
+    }
+
+    /* Swatch Card */
+    .swatch-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .swatch-color {
+      height: 80px;
+      width: 100%;
+    }
+
+    .swatch-info {
+      padding: var(--space-3) var(--space-4);
+      font-family: var(--font-mono);
+      font-size: var(--text-mono-code);
+      display: flex;
+      justify-content: space-between;
+      color: var(--text-secondary);
+    }
+
+    /* Typography Specimen */
+    .type-row {
+      display: flex;
+      flex-direction: column;
+      padding: var(--space-4) 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .type-meta {
+      font-family: var(--font-mono);
+      font-size: var(--text-caption);
+      color: var(--text-muted);
+      margin-bottom: var(--space-2);
+    }
+
+    /* Components Showcase */
+    .card-panel {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      box-shadow: var(--shadow-md);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-5);
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      font-family: var(--font-display);
+      font-weight: var(--font-weight-semibold);
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all var(--duration-fast) var(--ease-quart-out);
+    }
+
+    .btn-sm {
+      height: 36px;
+      padding: 0 var(--space-3);
+      font-size: var(--text-body-sm);
+      border-radius: var(--radius-sm);
+    }
+
+    .btn-md {
+      height: 44px;
+      padding: 0 var(--space-5);
+      font-size: var(--text-body-base);
+      border-radius: var(--radius-md);
+    }
+
+    .btn-lg {
+      height: 52px;
+      padding: 0 var(--space-6);
+      font-size: var(--text-body-lg);
+      border-radius: var(--radius-md);
+    }
+
+    .btn-primary {
+      background: var(--text-primary);
+      color: var(--bg-canvas);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-primary:hover {
+      box-shadow: var(--shadow-glow-cyan);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-primary);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--border-strong);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-secondary);
+    }
+
+    .btn-ghost:hover {
+      color: var(--text-primary);
+    }
+
+    /* Badges */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-1) var(--space-2);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+      font-size: var(--text-mono-badge);
+      letter-spacing: var(--tracking-wider);
+      text-transform: uppercase;
+      font-weight: var(--font-weight-semibold);
+      width: fit-content;
+    }
+
+    .badge-status {
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: var(--status-live);
+    }
+
+    .badge-status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: var(--radius-full);
+      background: var(--status-live);
+      box-shadow: var(--shadow-glow-emerald);
+    }
+
+    .badge-tech {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+    }
+
+    .badge-category {
+      background: transparent;
+      border: 1px solid var(--border-subtle);
+      color: var(--accent-primary);
+    }
+
+    /* Project Showcase Card */
+    .project-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      transition: transform var(--duration-fast) var(--ease-quart-out), border-color var(--duration-fast) ease;
+      cursor: pointer;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-strong);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .project-card-thumb {
+      height: 180px;
+      background: linear-gradient(135deg, var(--bg-subtle) 0%, var(--bg-inset) 100%);
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+      font-size: var(--text-caption);
+    }
+
+    .project-card-content {
+      padding: var(--space-5);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .project-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .project-title {
+      font-family: var(--font-display);
+      font-size: var(--text-heading-3);
+      font-weight: var(--font-weight-bold);
+    }
+
+    /* Form Controls */
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .form-label {
+      font-family: var(--font-mono);
+      font-size: var(--text-caption);
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-wider);
+    }
+
+    .form-input, .form-textarea {
+      background: var(--bg-inset);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      color: var(--text-primary);
+      padding: var(--space-3) var(--space-4);
+      font-family: var(--font-body);
+      font-size: var(--text-body-base);
+      outline: none;
+      transition: border-color var(--duration-fast) ease, box-shadow var(--duration-fast) ease;
+    }
+
+    .form-input:focus, .form-textarea:focus {
+      border-color: var(--accent-primary);
+      box-shadow: var(--shadow-glow-cyan);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Header Controls -->
+    <header class="top-toolbar">
+      <div class="brand-title">
+        <span>MAHARDIKA RAFA</span>
+        <span class="badge badge-category">DESIGN SYSTEM SPECIMEN</span>
+      </div>
+      <div class="controls-group">
+        <button class="tool-btn" id="toggle-theme">Theme: Dark</button>
+        <button class="tool-btn" id="toggle-motion">Reduced Motion: OFF</button>
+      </div>
+    </header>
+
+    <!-- 1. Typography Section -->
+    <section class="spec-section">
+      <div>
+        <div class="section-eyebrow">[ SPEC 01 ] TYPOGRAPHY</div>
+        <h2 class="section-title">Fluid Typography Scales</h2>
+      </div>
+
+      <div class="card-panel">
+        <div class="type-row">
+          <div class="type-meta">--text-display-2xl (Weight 800 · clamp 3.5rem to 7.5rem)</div>
+          <div style="font-family: var(--font-display); font-size: var(--text-display-2xl); font-weight: var(--font-weight-extrabold); line-height: var(--leading-none); letter-spacing: var(--tracking-tighter);">
+            SYSTEM ARCHITECT
+          </div>
+        </div>
+
+        <div class="type-row">
+          <div class="type-meta">--text-heading-1 (Weight 700 · clamp 2.25rem to 3.5rem)</div>
+          <div style="font-family: var(--font-display); font-size: var(--text-heading-1); font-weight: var(--font-weight-bold); line-height: var(--leading-tight); letter-spacing: var(--tracking-tight);">
+            Distributed Systems & Tactical Frontend
+          </div>
+        </div>
+
+        <div class="type-row">
+          <div class="type-meta">--text-heading-2 (Weight 700 · clamp 1.75rem to 2.5rem)</div>
+          <div style="font-family: var(--font-display); font-size: var(--text-heading-2); font-weight: var(--font-weight-bold);">
+            Selected Architectural Case Studies
+          </div>
+        </div>
+
+        <div class="type-row">
+          <div class="type-meta">--text-heading-3 (Weight 600 · clamp 1.35rem to 1.85rem)</div>
+          <div style="font-family: var(--font-display); font-size: var(--text-heading-3); font-weight: var(--font-weight-semibold);">
+            Sub-millisecond Transaction Engine
+          </div>
+        </div>
+
+        <div class="type-row">
+          <div class="type-meta">--text-body-base (Weight 400 · 1rem / 16px)</div>
+          <div style="font-size: var(--text-body-base); color: var(--text-secondary);">
+            Engineered with strict API separation between Laravel 13 core workflows and Next.js 16 App Router presentation layers, verified via Playwright end-to-end testing suites.
+          </div>
+        </div>
+
+        <div class="type-row">
+          <div class="type-meta">--text-mono-code (Weight 500 · 0.875rem / 14px)</div>
+          <div style="font-family: var(--font-mono); font-size: var(--text-mono-code); color: var(--accent-primary);">
+            GET /api/v1/projects/ledger-engine → 200 OK [ 14.2ms ]
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Color Palette Section -->
+    <section class="spec-section">
+      <div>
+        <div class="section-eyebrow">[ SPEC 02 ] COLOR MATRIX</div>
+        <h2 class="section-title">Foundational Swatches & Semantic Slots</h2>
+      </div>
+
+      <div class="grid-4">
+        <div class="swatch-card">
+          <div class="swatch-color" style="background: var(--bg-canvas); border-bottom: 1px solid var(--border-subtle);"></div>
+          <div class="swatch-info"><span>Canvas</span><span>--bg-canvas</span></div>
+        </div>
+        <div class="swatch-card">
+          <div class="swatch-color" style="background: var(--bg-surface);"></div>
+          <div class="swatch-info"><span>Surface</span><span>--bg-surface</span></div>
+        </div>
+        <div class="swatch-card">
+          <div class="swatch-color" style="background: var(--accent-primary);"></div>
+          <div class="swatch-info"><span style="color: #000;">Cyan</span><span>--accent-primary</span></div>
+        </div>
+        <div class="swatch-card">
+          <div class="swatch-color" style="background: var(--status-live);"></div>
+          <div class="swatch-info"><span style="color: #fff;">Emerald</span><span>--status-live</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Components Showcase Section -->
+    <section class="spec-section">
+      <div>
+        <div class="section-eyebrow">[ SPEC 03 ] REUSABLE PRIMITIVES</div>
+        <h2 class="section-title">Buttons, Badges & Interactive States</h2>
+      </div>
+
+      <div class="grid-2">
+        <!-- Buttons Card -->
+        <div class="card-panel">
+          <div class="form-label">Button Hierarchy (Sizes & Variants)</div>
+          <div style="display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center;">
+            <button class="btn btn-primary btn-lg">Primary Action (LG)</button>
+            <button class="btn btn-primary btn-md">Primary (MD)</button>
+            <button class="btn btn-primary btn-sm">Small (SM)</button>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center;">
+            <button class="btn btn-secondary btn-md">Secondary Outline</button>
+            <button class="btn btn-ghost btn-md">Ghost Action →</button>
+          </div>
+        </div>
+
+        <!-- Badges Card -->
+        <div class="card-panel">
+          <div class="form-label">Badges & Micro Indicators</div>
+          <div style="display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center;">
+            <span class="badge badge-status">
+              <span class="badge-status-dot"></span>
+              AVAILABLE FOR Q3/Q4
+            </span>
+            <span class="badge badge-category">[ DISTRIBUTED SYSTEMS ]</span>
+            <span class="badge badge-tech">Next.js 16</span>
+            <span class="badge badge-tech">Laravel 13</span>
+            <span class="badge badge-tech">Redis 7</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project Card Preview -->
+      <div class="grid-2">
+        <div class="project-card">
+          <div class="project-card-thumb">
+            [ 16:10 MEDIA SLOT — RETINA ASSET ]
+          </div>
+          <div class="project-card-content">
+            <div class="project-card-header">
+              <span class="badge badge-category">[ CASE STUDY 01 ]</span>
+              <span style="font-family: var(--font-mono); font-size: var(--text-caption); color: var(--text-muted);">2026</span>
+            </div>
+            <h3 class="project-title">Autonomous Core Ledger</h3>
+            <p style="color: var(--text-secondary); font-size: var(--text-body-sm);">
+              High-frequency event-sourced ledger handling transactional concurrency with Redis stream orchestrators and strict MySQL 8 normalization.
+            </p>
+            <div style="display: flex; gap: var(--space-2); flex-wrap: wrap; margin-top: var(--space-2);">
+              <span class="badge badge-tech">Laravel 13</span>
+              <span class="badge badge-tech">MySQL 8</span>
+              <span class="badge badge-tech">Next.js 16</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Form Sample -->
+        <div class="card-panel">
+          <div class="form-label">Form Inputs & Validation Controls</div>
+          <div class="form-group">
+            <label class="form-label">Direct Communication Channel</label>
+            <input type="email" class="form-input" placeholder="e.g. lead@enterprise.io" value="collaborator@domain.com" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Project Brief / Architectural Scope</label>
+            <textarea class="form-textarea" rows="3" placeholder="Define high-impact project parameters..."></textarea>
+          </div>
+          <button class="btn btn-primary btn-md" style="align-self: flex-start;">Send Transmitted Packet →</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // Theme Toggle
+    const themeBtn = document.getElementById('toggle-theme');
+    themeBtn.addEventListener('click', () => {
+      const html = document.documentElement;
+      if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        html.classList.add('light');
+        themeBtn.textContent = 'Theme: Light';
+      } else {
+        html.classList.remove('light');
+        html.classList.add('dark');
+        themeBtn.textContent = 'Theme: Dark';
+      }
+    });
+
+    // Reduced Motion Toggle
+    const motionBtn = document.getElementById('toggle-motion');
+    motionBtn.addEventListener('click', () => {
+      document.body.classList.toggle('reduced-motion');
+      const isReduced = document.body.classList.contains('reduced-motion');
+      motionBtn.textContent = `Reduced Motion: ${isReduced ? 'ON' : 'OFF'}`;
+      motionBtn.classList.toggle('active', isReduced);
+    });
+  </script>
+</body>
+</html>
