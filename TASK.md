@@ -23,7 +23,7 @@
 - [x] Configure MySQL.
 - [x] Configure Redis.
 - [x] Configure storage.
-- [ ] Install Sanctum.
+- [x] Install Sanctum.
 - [ ] Install Filament 5.
 - [ ] Configure queues/scheduler.
 - [ ] Configure tests.
