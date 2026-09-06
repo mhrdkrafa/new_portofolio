@@ -64,7 +64,7 @@
 - [x] Navigation.
 - [x] SEO.
 - [x] Theme presets.
-- [ ] Settings.
+- [x] Settings.
 - [ ] Contact inbox.
 - [ ] Audit logs.
 

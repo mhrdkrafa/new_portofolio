@@ -128,4 +128,12 @@ class FilamentAdminResourcesTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee('Obsidian Dark');
     }
+
+    public function test_admin_can_render_website_settings_resource_page(): void
+    {
+        $response = $this->actingAs($this->admin)->get('/admin/website-settings');
+
+        $response->assertStatus(200);
+        $response->assertSee('site_title');
+    }
 }
