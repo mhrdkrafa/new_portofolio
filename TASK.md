@@ -6,7 +6,7 @@
 - [x] Define hero concept.
 - [x] Decide light/dark/default mode.
 - [x] Prototype motion language.
-- [ ] Define 3D/WebGL usage boundary.
+- [x] Define 3D/WebGL usage boundary.
 
 ## Phase 1 — Design System
 - [ ] Define typography.
