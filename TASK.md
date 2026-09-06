@@ -59,7 +59,7 @@
 - [x] Skills.
 - [x] Services.
 - [x] Testimonials.
-- [ ] Articles.
+- [x] Articles.
 - [ ] Homepage section manager.
 - [ ] Navigation.
 - [ ] SEO.

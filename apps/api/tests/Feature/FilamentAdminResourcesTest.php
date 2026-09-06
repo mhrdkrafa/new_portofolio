@@ -88,4 +88,12 @@ class FilamentAdminResourcesTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee('Alexander Vance');
     }
+
+    public function test_admin_can_render_articles_resource_page(): void
+    {
+        $response = $this->actingAs($this->admin)->get('/admin/articles');
+
+        $response->assertStatus(200);
+        $response->assertSee('Architecting Low-Latency Headless Portfolios');
+    }
 }
