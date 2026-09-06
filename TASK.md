@@ -40,7 +40,7 @@
 - [x] Skills.
 - [x] Services.
 - [x] Testimonials.
-- [ ] Articles/tags.
+- [x] Articles/tags.
 - [ ] Contact messages.
 - [ ] Homepage sections.
 - [ ] Navigation.
