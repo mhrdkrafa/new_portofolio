@@ -181,6 +181,41 @@ On dark obsidian backgrounds, traditional drop shadows are visually ineffective.
 | `shadow-glow-cyan` | `0 0 24px rgba(0, 240, 255, 0.25)` | `0 0 20px rgba(2, 132, 199, 0.20)` | Magnetic CTA active focus |
 | `shadow-glow-emerald` | `0 0 16px rgba(16, 185, 129, 0.40)` | `0 0 14px rgba(5, 150, 105, 0.35)` | Live status pulse |
 
+---
+
+## 6. Motion System Tokens
+
+Centralized motion timing and easing profiles ensure rhythmic coherence between CSS transitions and GSAP timelines.
+
+### 6.1 Duration Scale
+
+| Token | Milliseconds | Typical Use Case |
+| :--- | :--- | :--- |
+| `duration-instant` | `0ms` | Accessibility bypass & reduced-motion resets |
+| `duration-fast` | `150ms` | Micro-interactions, button presses, icon shifts |
+| `duration-normal` | `280ms` | Dropdowns, mobile nav drawer, theme toggles |
+| `duration-medium` | `450ms` | Modal presentation, page transitions, accordion expands |
+| `duration-slow` | `750ms` | Hero headline reveals, clip-path curtain animations |
+| `duration-deliberate` | `1200ms` | Ambient canvas opacity fades, deep background transitions |
+
+### 6.2 Calibrated Easing Curves
+
+```css
+--ease-linear: linear;
+--ease-quart-out: cubic-bezier(0.16, 1, 0.3, 1);     /* Standard editorial entrance */
+--ease-expo-out: cubic-bezier(0.19, 1, 0.22, 1);     /* High-impact headline unmasking */
+--ease-elastic: cubic-bezier(0.34, 1.56, 0.64, 1);   /* Magnetic cursor return */
+--ease-smooth: cubic-bezier(0.65, 0, 0.35, 1);       /* Pinned horizontal reel */
+```
+
+### 6.3 Stagger & Scrub Tokens
+
+- `stagger-micro`: `0.04s` (Character-by-character reveals)
+- `stagger-word`: `0.08s` (Hero title word reveals)
+- `stagger-card`: `0.12s` (Project showcase cards entry)
+- `scrub-responsive`: `1.0s` (ScrollTrigger parallax inertia)
+
+
 
 
 

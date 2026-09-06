@@ -14,7 +14,7 @@
 - [x] Define spacing.
 - [x] Define radius.
 - [x] Define shadows.
-- [ ] Define motion tokens.
+- [x] Define motion tokens.
 - [ ] Define reduced-motion behavior.
 - [ ] Define reusable components.
 
