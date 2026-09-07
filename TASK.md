@@ -74,7 +74,7 @@
 - [x] Tailwind.
 - [x] ESLint.
 - [x] API client.
-- [ ] Typed API models.
+- [x] Typed API models.
 - [ ] Routes.
 - [ ] Metadata.
 - [ ] Error/loading/not-found states.
