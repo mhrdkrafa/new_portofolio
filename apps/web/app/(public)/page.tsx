@@ -6,6 +6,8 @@ import { ProjectCard } from "@/components/projects/ProjectCard";
 import { ArticleCard } from "@/components/articles/ArticleCard";
 import type { Project, Profile, Article, Service } from "@/types/api";
 
+import { HeroMotion } from "@/components/motion/HeroMotion";
+
 export default async function HomePage() {
   let profile: Profile | null = null;
   let featuredProjects: Project[] = [];
@@ -130,23 +132,37 @@ export default async function HomePage() {
   return (
     <div className="w-full">
       {/* 1. Hero Section */}
-      <section className="relative min-h-[calc(100vh-5rem)] flex flex-col justify-center px-6 sm:px-8 md:px-12 max-w-7xl mx-auto py-20">
-        <div className="max-w-4xl space-y-6">
-          <Eyebrow>Systems Architecture × Creative Engineering</Eyebrow>
+      <section className="relative min-h-[calc(100vh-5rem)] flex flex-col justify-center px-6 sm:px-8 md:px-12 max-w-7xl mx-auto py-20 overflow-hidden">
+        {/* Subtle decorative glow */}
+        <div
+          data-hero-glow
+          className="pointer-events-none absolute -top-24 -left-24 w-96 h-96 rounded-full bg-cyan-500/10 blur-3xl"
+        />
 
-          <Display size="2xl">
-            {profile?.full_name ?? "Mahardika Rafa"}
-          </Display>
+        <HeroMotion className="max-w-4xl space-y-6">
+          <div data-hero-eyebrow>
+            <Eyebrow>Systems Architecture × Creative Engineering</Eyebrow>
+          </div>
 
-          <Text size="lg" variant="primary" className="max-w-3xl font-medium sm:text-2xl text-zinc-300">
-            {profile?.headline ?? "Systems Architect & Creative Full-Stack Engineer"}
-          </Text>
+          <div data-hero-title>
+            <Display size="2xl">
+              {profile?.full_name ?? "Mahardika Rafa"}
+            </Display>
+          </div>
 
-          <Text size="base" variant="secondary" className="max-w-2xl text-zinc-400">
-            {profile?.bio}
-          </Text>
+          <div data-hero-headline>
+            <Text size="lg" variant="primary" className="max-w-3xl font-medium sm:text-2xl text-zinc-300">
+              {profile?.headline ?? "Systems Architect & Creative Full-Stack Engineer"}
+            </Text>
+          </div>
 
-          <div className="pt-6 flex flex-wrap gap-4">
+          <div data-hero-bio>
+            <Text size="base" variant="secondary" className="max-w-2xl text-zinc-400">
+              {profile?.bio}
+            </Text>
+          </div>
+
+          <div data-hero-actions className="pt-6 flex flex-wrap gap-4">
             <Button
               href="/projects"
               variant="primary"
@@ -163,7 +179,7 @@ export default async function HomePage() {
               Initiate Consultation
             </Button>
           </div>
-        </div>
+        </HeroMotion>
       </section>
 
       {/* 2. Featured Engineering Works */}

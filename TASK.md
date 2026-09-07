@@ -97,7 +97,7 @@
 - [x] GSAP setup.
 - [x] @gsap/react setup.
 - [x] ScrollTrigger.
-- [ ] Hero animation.
+- [x] Hero animation.
 - [ ] Text reveal.
 - [ ] Project reveal.
 - [ ] Page transitions.
