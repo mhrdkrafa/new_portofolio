@@ -107,7 +107,7 @@
 ## Phase 8 — 3D
 - [x] Decide whether 3D adds real value.
 - [x] Create isolated R3F scene.
-- [ ] Lazy-load scene.
+- [x] Lazy-load scene.
 - [ ] Mobile fallback.
 - [ ] Reduced-motion fallback.
 - [ ] WebGL failure fallback.
