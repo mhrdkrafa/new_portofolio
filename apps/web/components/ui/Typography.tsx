@@ -1,10 +1,22 @@
-import type { ElementType, HTMLAttributes, ReactNode } from "react";
+import type { HTMLAttributes, ReactNode } from "react";
+
+export type TypographyTag =
+  | "h1"
+  | "h2"
+  | "h3"
+  | "h4"
+  | "h5"
+  | "h6"
+  | "p"
+  | "span"
+  | "div"
+  | "label";
 
 // ============================================================================
 // Display Heading (Fluid Oversized Editorial Typography)
 // ============================================================================
 export interface DisplayProps extends HTMLAttributes<HTMLHeadingElement> {
-  as?: ElementType;
+  as?: TypographyTag;
   size?: "2xl" | "xl";
   children: ReactNode;
 }
@@ -21,13 +33,16 @@ export function Display({
       ? "text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tighter leading-[0.95]"
       : "text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.0]";
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const Tag = Component as any;
+
   return (
-    <Component
+    <Tag
       className={`font-bold font-display text-white ${sizeClasses} ${className}`}
       {...props}
     >
       {children}
-    </Component>
+    </Tag>
   );
 }
 
@@ -35,7 +50,7 @@ export function Display({
 // Section Headings (H1 - H4)
 // ============================================================================
 export interface HeadingProps extends HTMLAttributes<HTMLHeadingElement> {
-  as?: ElementType;
+  as?: TypographyTag;
   level?: 1 | 2 | 3 | 4;
   children: ReactNode;
 }
@@ -47,7 +62,8 @@ export function Heading({
   children,
   ...props
 }: HeadingProps) {
-  const Component = as || (`h${level}` as ElementType);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const Tag = (as || `h${level}`) as any;
 
   const levelClasses = {
     1: "text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-tight",
@@ -57,12 +73,12 @@ export function Heading({
   }[level];
 
   return (
-    <Component
+    <Tag
       className={`font-display text-white ${levelClasses} ${className}`}
       {...props}
     >
       {children}
-    </Component>
+    </Tag>
   );
 }
 
@@ -76,7 +92,7 @@ export interface EyebrowProps extends HTMLAttributes<HTMLSpanElement> {
 export function Eyebrow({ className = "", children, ...props }: EyebrowProps) {
   return (
     <span
-      className={`inline-block text-xs font-mono tracking-widest uppercase text-cyan-400 font-semibold ${className}`}
+      className={`inline-block font-mono text-xs font-semibold tracking-widest text-cyan-400 uppercase ${className}`}
       {...props}
     >
       {children}
@@ -85,10 +101,10 @@ export function Eyebrow({ className = "", children, ...props }: EyebrowProps) {
 }
 
 // ============================================================================
-// Body Text
+// Body & Subtitle Text
 // ============================================================================
-export interface TextProps extends HTMLAttributes<HTMLParagraphElement> {
-  as?: ElementType;
+export interface TextProps extends HTMLAttributes<HTMLElement> {
+  as?: TypographyTag;
   size?: "lg" | "base" | "sm" | "caption";
   variant?: "primary" | "secondary" | "muted" | "ghost";
   children: ReactNode;
@@ -116,13 +132,16 @@ export function Text({
     ghost: "text-zinc-600",
   }[variant];
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const Tag = Component as any;
+
   return (
-    <Component
+    <Tag
       className={`font-body ${sizeClasses} ${variantClasses} ${className}`}
       {...props}
     >
       {children}
-    </Component>
+    </Tag>
   );
 }
 
