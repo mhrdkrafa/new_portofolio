@@ -121,7 +121,7 @@
 - [x] Experience.
 - [x] Services.
 - [x] Articles.
-- [ ] Article detail.
+- [x] Article detail.
 - [ ] Contact.
 
 ## Phase 10 — CMS Integration
