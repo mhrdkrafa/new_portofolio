@@ -88,7 +88,7 @@
 - [x] Typography.
 - [x] Project card.
 - [x] Article card.
-- [ ] Section wrapper.
+- [x] Section wrapper.
 - [ ] Media component.
 - [ ] Contact form.
 - [ ] Responsive navigation.
