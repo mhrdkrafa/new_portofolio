@@ -4,16 +4,28 @@ import { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
-interface ArchitecturalLatticeProps {
+export interface ArchitecturalLatticeProps {
   interactive?: boolean;
+  reduceMotion?: boolean;
 }
 
-export function ArchitecturalLattice({ interactive = true }: ArchitecturalLatticeProps) {
+export function ArchitecturalLattice({
+  interactive = true,
+  reduceMotion = false,
+}: ArchitecturalLatticeProps) {
   const outerGroupRef = useRef<THREE.Group>(null);
   const innerMeshRef = useRef<THREE.Mesh>(null);
   const pointerTarget = useRef({ x: 0, y: 0 });
 
   useFrame((state, delta) => {
+    // If reduced motion is requested, freeze rotation at a resting isometric angle
+    if (reduceMotion) {
+      if (outerGroupRef.current) {
+        outerGroupRef.current.rotation.set(0.35, 0.45, 0.15);
+      }
+      return;
+    }
+
     // Subtle, steady ambient rotation
     if (outerGroupRef.current) {
       outerGroupRef.current.rotation.x += delta * 0.15;

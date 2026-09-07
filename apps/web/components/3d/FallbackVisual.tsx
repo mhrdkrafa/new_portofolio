@@ -24,7 +24,7 @@ export function FallbackVisual({
         viewBox="0 0 320 320"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="w-64 h-64 sm:w-80 sm:h-80 opacity-70 animate-[spin_60s_linear_infinite]"
+        className="w-64 h-64 sm:w-80 sm:h-80 opacity-70 animate-[spin_60s_linear_infinite] motion-reduce:animate-none"
         aria-hidden="true"
       >
         <defs>
@@ -76,7 +76,7 @@ export function FallbackVisual({
         <circle cx="40" cy="230" r="3.5" fill="#00F0FF" />
         <circle cx="40" cy="90" r="3.5" fill="#00F0FF" />
 
-        <circle cx="160" cy="160" r="4.5" fill="#00F0FF" className="animate-pulse" />
+        <circle cx="160" cy="160" r="4.5" fill="#00F0FF" className="animate-pulse motion-reduce:animate-none" />
       </svg>
     </div>
   );

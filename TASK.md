@@ -109,7 +109,7 @@
 - [x] Create isolated R3F scene.
 - [x] Lazy-load scene.
 - [x] Mobile fallback.
-- [ ] Reduced-motion fallback.
+- [x] Reduced-motion fallback.
 - [ ] WebGL failure fallback.
 - [ ] Performance test.
 
