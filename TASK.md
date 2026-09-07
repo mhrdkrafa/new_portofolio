@@ -118,7 +118,7 @@
 - [x] Projects index.
 - [x] Project detail.
 - [x] About.
-- [ ] Experience.
+- [x] Experience.
 - [ ] Services.
 - [ ] Articles.
 - [ ] Article detail.

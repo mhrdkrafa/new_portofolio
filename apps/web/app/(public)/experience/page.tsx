@@ -1,6 +1,18 @@
-import Link from "next/link";
+import type { Metadata } from "next";
 import { portfolioApi } from "@/lib/api/client";
+import { constructMetadata } from "@/lib/seo/metadata";
+import { Display, Text, Eyebrow } from "@/components/ui/Typography";
+import { Button } from "@/components/ui/Button";
+import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import type { Experience, Education } from "@/types/api";
+
+export const metadata: Metadata = {
+  ...constructMetadata({
+    title: "Engineering Experience & Career Trajectory",
+    description: "Chronological trajectory of systems architecture, engineering leadership roles, and academic foundations by Mahardika Rafa.",
+    canonical: "/experience",
+  }),
+};
 
 export default async function ExperiencePage() {
   let experiences: Experience[] = [];
@@ -13,33 +25,50 @@ export default async function ExperiencePage() {
     experiences = [
       {
         id: 1,
-        company_name: "Apex Systems",
+        company_name: "Aether Dynamics Lab",
         position: "Principal Systems Architect",
-        location: "Remote / Singapore",
+        location: "Jakarta, Indonesia & Remote",
         start_date: "2024-01-01",
         end_date: null,
         is_current: true,
-        description: "Leading core infrastructure, high-throughput microservices, and distributed observability topologies.",
+        description: "Directing cloud-native architecture, high-frequency distributed ledgers, and core platform API performance.",
         highlights: [
-          "Architected real-time streaming pipeline reducing event processing latency from 450ms to 24ms.",
-          "Spearheaded multi-tenant cloud consolidation delivering 38% compute cost reduction.",
+          "Engineered distributed ingestion pipelines processing 45,000 requests/sec with Redis Streams and Go workers.",
+          "Cut enterprise infrastructure compute footprint by 38% via query execution plan rewrites and tiered caching.",
+          "Established zero-downtime CI/CD deployment gates using Blue/Green deployments on Kubernetes.",
         ],
         sort_order: 1,
       },
       {
         id: 2,
-        company_name: "CloudScale Matrix",
-        position: "Senior Full-Stack & Creative Engineer",
-        location: "Jakarta, Indonesia",
+        company_name: "Nexus Interactive Studio",
+        position: "Lead Full-Stack & Motion Engineer",
+        location: "Remote / Singapore",
         start_date: "2021-06-01",
         end_date: "2023-12-31",
         is_current: false,
-        description: "Engineered performant Next.js web applications, GSAP micro-interactions, and resilient Laravel backend microservices.",
+        description: "Spearheaded headless web architectures, real-time WebGL experiences, and high-conversion client platforms.",
         highlights: [
-          "Built design system and headless storefront handling 2M+ monthly active users with 99.98% uptime.",
-          "Implemented deterministic scroll-driven animation library using GSAP ScrollTrigger.",
+          "Delivered 14 bespoke commercial platforms maintaining 100/100 Lighthouse performance and accessibility scores.",
+          "Constructed internal GSAP 3 animation library with deterministic reduced-motion and mobile fallbacks.",
+          "Mentored an international squad of 8 frontend and backend software engineers.",
         ],
         sort_order: 2,
+      },
+      {
+        id: 3,
+        company_name: "Vortex Data Systems",
+        position: "Senior Software Engineer",
+        location: "Jakarta, Indonesia",
+        start_date: "2018-08-01",
+        end_date: "2021-05-31",
+        is_current: false,
+        description: "Built scalable relational databases, internal analytical dashboards, and microservice APIs.",
+        highlights: [
+          "Migrated monolithic MySQL database to sharded read/write clusters with zero customer downtime.",
+          "Authored automated unit and integration test suites achieving 92% code coverage across critical financial paths.",
+        ],
+        sort_order: 3,
       },
     ];
   }
@@ -53,100 +82,164 @@ export default async function ExperiencePage() {
         id: 1,
         institution: "Bandung Institute of Technology (ITB)",
         degree: "Bachelor of Science",
-        field_of_study: "Informatics & Computer Engineering",
-        start_year: 2017,
-        end_year: 2021,
-        description: "Graduated with honors. Specialized in Distributed Computing and Database Systems.",
-        activities: ["Lead Researcher, Distributed Systems Lab", "President, IT Computing Society"],
+        field_of_study: "Computer Science & Distributed Systems",
+        start_year: 2014,
+        end_year: 2018,
+        description: "Graduated with highest honors. Specialized in distributed consensus protocols, concurrency control, and computer graphics.",
+        activities: ["Lead Researcher, Distributed Systems Lab", "ACM ICPC Regional Contestant", "Teaching Assistant, Algorithm Design"],
         sort_order: 1,
       },
     ];
   }
 
   return (
-    <div className="min-h-screen p-8 md:p-16 max-w-5xl mx-auto">
-      <div className="flex justify-between items-center py-6 border-b border-white/10 mb-12">
-        <Link href="/" className="text-xs font-mono text-zinc-400 hover:text-white transition-colors">
-          ← Back to Overview
-        </Link>
-        <span className="text-xs font-mono text-cyan-400">Track Record & Credentials</span>
-      </div>
-
-      <header className="max-w-2xl mb-16">
-        <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-4">
-          Experience & Academic Foundation
-        </h1>
-        <p className="text-zinc-400 leading-relaxed">
-          Over 8 years of architecting scalable distributed backends, resilient APIs, and interactive frontend systems.
-        </p>
+    <div className="w-full pb-20">
+      {/* Top Header */}
+      <header className="px-6 sm:px-8 md:px-12 max-w-7xl mx-auto pt-16 pb-12">
+        <Eyebrow className="mb-3">Track Record & Career Milestones</Eyebrow>
+        <Display size="xl" className="mb-4">
+          Engineering Leadership & Systems Experience
+        </Display>
+        <Text size="lg" variant="secondary" className="max-w-3xl leading-relaxed">
+          Over 8 years of designing fault-tolerant distributed backends, orchestrating cloud infrastructures, and shipping award-winning digital experiences.
+        </Text>
       </header>
 
-      <section className="space-y-12 mb-20">
-        <h2 className="text-xl font-bold text-white tracking-tight border-b border-white/10 pb-3">
-          Professional Milestones
-        </h2>
-
-        <div className="space-y-8">
+      {/* Professional Milestones Timeline */}
+      <SectionWrapper
+        index={1}
+        title="Professional Milestones"
+        subtitle="Chronological progression of technical leadership and architectural responsibilities"
+      >
+        <div className="relative border-l border-white/10 pl-6 sm:pl-10 ml-3 sm:ml-6 space-y-12">
           {experiences.map((exp) => (
-            <div
-              key={exp.id}
-              className="p-6 rounded-lg bg-zinc-900/50 border border-zinc-800/80 space-y-3"
-            >
-              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center">
+            <div key={exp.id} className="relative group">
+              {/* Timeline Indicator Node */}
+              <div
+                aria-hidden="true"
+                className={`absolute -left-[31px] sm:-left-[47px] top-1.5 w-4 h-4 rounded-full border-2 ${
+                  exp.is_current
+                    ? "bg-cyan-400 border-cyan-400 shadow-[0_0_12px_rgba(0,240,255,0.8)]"
+                    : "bg-zinc-900 border-zinc-600 group-hover:border-cyan-400 transition-colors"
+                }`}
+              />
+
+              <div className="p-6 sm:p-8 rounded-2xl bg-zinc-900/60 border border-zinc-800/80 hover:border-cyan-400/40 transition-all duration-300">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                  <div>
+                    <h3 className="text-xl sm:text-2xl font-bold font-display text-white">
+                      {exp.position}
+                    </h3>
+                    <div className="text-sm font-mono text-cyan-400 mt-0.5">
+                      {exp.company_name}
+                      {exp.location && <span className="text-zinc-500 font-sans"> — {exp.location}</span>}
+                    </div>
+                  </div>
+                  <div className="text-xs font-mono text-zinc-400 bg-zinc-800/80 px-3 py-1 rounded-full w-fit border border-zinc-700/50">
+                    {exp.start_date.slice(0, 4)} — {exp.is_current ? "Present" : exp.end_date?.slice(0, 4)}
+                  </div>
+                </div>
+
+                {exp.description && (
+                  <p className="text-sm text-zinc-300 font-body leading-relaxed mb-6">
+                    {exp.description}
+                  </p>
+                )}
+
+                {exp.highlights && exp.highlights.length > 0 && (
+                  <div className="space-y-2 border-t border-zinc-800/80 pt-4">
+                    <div className="text-xs font-mono uppercase tracking-widest text-zinc-500">
+                      Key Engineering Outcomes
+                    </div>
+                    <ul className="space-y-2">
+                      {exp.highlights.map((highlight, idx) => (
+                        <li key={idx} className="flex items-start text-xs text-zinc-300 font-body">
+                          <span className="text-cyan-400 mr-2 font-mono">›</span>
+                          <span>{highlight}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </SectionWrapper>
+
+      {/* Academic Foundation */}
+      {education.length > 0 && (
+        <SectionWrapper
+          index={2}
+          title="Academic Credentials"
+          subtitle="Formal software engineering foundations and distributed systems research"
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {education.map((edu) => (
+              <div
+                key={edu.id}
+                className="p-8 rounded-xl bg-zinc-900/50 border border-zinc-800/80 flex flex-col justify-between"
+              >
                 <div>
-                  <h3 className="text-lg font-bold text-white">{exp.position}</h3>
-                  <div className="text-sm font-medium text-cyan-400">{exp.company_name}</div>
+                  <div className="flex justify-between items-start gap-4 mb-3">
+                    <h3 className="text-xl font-bold font-display text-white">{edu.institution}</h3>
+                    <span className="text-xs font-mono text-zinc-400 bg-zinc-800 px-2.5 py-0.5 rounded border border-zinc-700">
+                      {edu.start_year} — {edu.end_year ?? "Present"}
+                    </span>
+                  </div>
+                  <div className="text-sm font-mono text-cyan-400 mb-4">
+                    {edu.degree} in {edu.field_of_study}
+                  </div>
+                  {edu.description && (
+                    <p className="text-sm text-zinc-400 font-body leading-relaxed mb-6">
+                      {edu.description}
+                    </p>
+                  )}
                 </div>
-                <div className="text-xs font-mono text-zinc-500 mt-1 sm:mt-0">
-                  {exp.start_date.slice(0, 4)} — {exp.is_current ? "Present" : exp.end_date?.slice(0, 4)}
-                </div>
+
+                {edu.activities && edu.activities.length > 0 && (
+                  <div className="border-t border-zinc-800/80 pt-4">
+                    <div className="flex flex-wrap gap-2">
+                      {edu.activities.map((act, i) => (
+                        <span
+                          key={i}
+                          className="px-2.5 py-0.5 rounded text-[11px] font-mono bg-zinc-800/90 text-zinc-300 border border-zinc-700/50"
+                        >
+                          {act}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
+            ))}
+          </div>
+        </SectionWrapper>
+      )}
 
-              {exp.description && (
-                <p className="text-sm text-zinc-400 leading-relaxed pt-1">
-                  {exp.description}
-                </p>
-              )}
-
-              {exp.highlights && exp.highlights.length > 0 && (
-                <ul className="list-disc list-inside text-xs text-zinc-400 space-y-1 pt-2">
-                  {exp.highlights.map((h, i) => (
-                    <li key={i}>{h}</li>
-                  ))}
-                </ul>
-              )}
-            </div>
-          ))}
+      {/* Next Steps CTA */}
+      <SectionWrapper
+        index={3}
+        title="Looking for Architectural Guidance?"
+        subtitle="Explore my verified engineering works or discuss an upcoming platform build."
+      >
+        <div className="p-8 sm:p-12 rounded-2xl bg-gradient-to-b from-zinc-900/80 to-zinc-950 border border-zinc-800 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
+          <div className="space-y-2 max-w-xl">
+            <h3 className="text-2xl font-bold font-display text-white">Let’s discuss your technical goals.</h3>
+            <p className="text-sm text-zinc-400 font-body leading-relaxed">
+              From architecting low-latency microservices to scaling distributed databases.
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-4">
+            <Button href="/projects" variant="secondary" size="lg">
+              Explore Projects
+            </Button>
+            <Button href="/contact" variant="primary" size="lg" rightIcon={<span>→</span>}>
+              Initiate Consultation
+            </Button>
+          </div>
         </div>
-      </section>
-
-      <section className="space-y-8">
-        <h2 className="text-xl font-bold text-white tracking-tight border-b border-white/10 pb-3">
-          Education & Specializations
-        </h2>
-
-        <div className="space-y-6">
-          {education.map((edu) => (
-            <div
-              key={edu.id}
-              className="p-6 rounded-lg bg-zinc-900/30 border border-zinc-800/60 space-y-2"
-            >
-              <div className="flex justify-between items-center">
-                <h3 className="text-base font-bold text-white">{edu.institution}</h3>
-                <span className="text-xs font-mono text-zinc-500">
-                  {edu.start_year} — {edu.end_year ?? "Present"}
-                </span>
-              </div>
-              <div className="text-sm text-cyan-400">
-                {edu.degree} in {edu.field_of_study}
-              </div>
-              {edu.description && (
-                <p className="text-xs text-zinc-400">{edu.description}</p>
-              )}
-            </div>
-          ))}
-        </div>
-      </section>
+      </SectionWrapper>
     </div>
   );
 }
