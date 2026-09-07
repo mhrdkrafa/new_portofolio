@@ -1,5 +1,7 @@
-import Link from "next/link";
 import { portfolioApi } from "@/lib/api/client";
+import { Display, Text, Eyebrow } from "@/components/ui/Typography";
+import { SectionWrapper } from "@/components/ui/SectionWrapper";
+import { ArticleCard } from "@/components/articles/ArticleCard";
 import type { Article } from "@/types/api";
 
 export default async function ArticlesPage() {
@@ -44,59 +46,27 @@ export default async function ArticlesPage() {
   }
 
   return (
-    <div className="min-h-screen p-8 md:p-16 max-w-5xl mx-auto">
-      <div className="flex justify-between items-center py-6 border-b border-white/10 mb-12">
-        <Link href="/" className="text-xs font-mono text-zinc-400 hover:text-white transition-colors">
-          ← Back to Overview
-        </Link>
-        <span className="text-xs font-mono text-cyan-400">Technical Articles</span>
-      </div>
-
-      <header className="max-w-2xl mb-16">
-        <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-4">
-          Writings & Technical Essays
-        </h1>
-        <p className="text-zinc-400 leading-relaxed">
+    <div className="w-full">
+      <header className="px-6 sm:px-8 md:px-12 max-w-7xl mx-auto pt-16 pb-12">
+        <Eyebrow className="mb-3">Writings & Architecture Notes</Eyebrow>
+        <Display size="xl" className="mb-4">
+          Technical Essays & Observations
+        </Display>
+        <Text size="lg" variant="secondary" className="max-w-2xl">
           Deep dives on distributed systems engineering, high-throughput caching, and deterministic frontend motion choreography.
-        </p>
+        </Text>
       </header>
 
-      <div className="space-y-8">
-        {articles.map((article) => (
-          <Link
-            key={article.id}
-            href={`/articles/${article.slug}`}
-            className="group block p-8 rounded-xl bg-zinc-900/40 border border-zinc-800/80 hover:border-cyan-500/40 transition-all duration-300"
-          >
-            <div className="flex items-center space-x-3 text-xs font-mono text-zinc-500 mb-3">
-              <span>{article.published_at}</span>
-              <span>•</span>
-              <span>{article.reading_time} min read</span>
-            </div>
-
-            <h2 className="text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors mb-3">
-              {article.title}
-            </h2>
-
-            <p className="text-sm text-zinc-400 leading-relaxed line-clamp-2 mb-6">
-              {article.excerpt}
-            </p>
-
-            {article.tags && article.tags.length > 0 && (
-              <div className="flex flex-wrap gap-2">
-                {article.tags.map((tag) => (
-                  <span
-                    key={tag.id}
-                    className="px-2.5 py-0.5 rounded text-[11px] font-mono bg-zinc-800/80 text-zinc-400 border border-zinc-700/40"
-                  >
-                    #{tag.name}
-                  </span>
-                ))}
-              </div>
-            )}
-          </Link>
-        ))}
-      </div>
+      <SectionWrapper
+        title="All Technical Writings"
+        subtitle={`Showing ${articles.length} published essays`}
+      >
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {articles.map((article) => (
+            <ArticleCard key={article.id} article={article} />
+          ))}
+        </div>
+      </SectionWrapper>
     </div>
   );
 }

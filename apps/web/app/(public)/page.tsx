@@ -1,10 +1,16 @@
-import Link from "next/link";
 import { portfolioApi } from "@/lib/api/client";
-import type { Project, Profile } from "@/types/api";
+import { Display, Text, Eyebrow } from "@/components/ui/Typography";
+import { Button } from "@/components/ui/Button";
+import { SectionWrapper } from "@/components/ui/SectionWrapper";
+import { ProjectCard } from "@/components/projects/ProjectCard";
+import { ArticleCard } from "@/components/articles/ArticleCard";
+import type { Project, Profile, Article, Service } from "@/types/api";
 
 export default async function HomePage() {
   let profile: Profile | null = null;
   let featuredProjects: Project[] = [];
+  let recentArticles: Article[] = [];
+  let coreServices: Service[] = [];
 
   try {
     const profileRes = await portfolioApi.getProfile();
@@ -36,6 +42,11 @@ export default async function HomePage() {
         featured: true,
         status: "published",
         sort_order: 1,
+        technologies: [
+          { id: 1, name: "Next.js 16", slug: "nextjs", category: "frontend" },
+          { id: 2, name: "Laravel 13", slug: "laravel", category: "backend" },
+          { id: 3, name: "GSAP 3", slug: "gsap", category: "motion" },
+        ],
       },
       {
         id: 2,
@@ -47,106 +58,211 @@ export default async function HomePage() {
         featured: true,
         status: "published",
         sort_order: 2,
+        technologies: [
+          { id: 4, name: "Redis Streams", slug: "redis", category: "infra" },
+          { id: 5, name: "MySQL 8", slug: "mysql", category: "db" },
+          { id: 6, name: "Laravel API", slug: "laravel", category: "backend" },
+        ],
+      },
+    ];
+  }
+
+  try {
+    const articlesRes = await portfolioApi.getArticles();
+    recentArticles = (articlesRes as { data: Article[] }).data ?? articlesRes;
+  } catch {
+    recentArticles = [
+      {
+        id: 1,
+        title: "Architecting Low-Latency Headless Portfolios with Next.js 16 & Laravel 13",
+        slug: "architecting-low-latency-headless-portfolios",
+        excerpt: "An architectural deep-dive into pairing Laravel 13 API backends with Next.js 16 App Router for sub-second page loads and zero layout shift.",
+        body: "",
+        reading_time: 8,
+        status: "published",
+        published_at: "2026-08-15",
+        tags: [
+          { id: 1, name: "Architecture", slug: "architecture" },
+          { id: 2, name: "Next.js 16", slug: "nextjs-16" },
+        ],
+      },
+    ];
+  }
+
+  try {
+    const servicesRes = await portfolioApi.getServices();
+    coreServices = (servicesRes as { data: Service[] }).data ?? servicesRes;
+  } catch {
+    coreServices = [
+      {
+        id: 1,
+        title: "Systems Architecture & Scalability",
+        slug: "systems-architecture",
+        short_description: "Designing fault-tolerant, high-throughput distributed architectures, database sharding, and caching strategies.",
+        description: "",
+        features: ["Distributed database clustering", "Sub-millisecond Redis Streams", "Decoupled event-driven queues"],
+        is_active: true,
+        sort_order: 1,
+      },
+      {
+        id: 2,
+        title: "Creative Full-Stack Engineering",
+        slug: "creative-full-stack-engineering",
+        short_description: "Building production-grade headless web applications with Next.js 16, Laravel 13 API, and seamless interactions.",
+        description: "",
+        features: ["Server Components architecture", "Filament 5 CMS modeling", "Strict TypeScript type contracts"],
+        is_active: true,
+        sort_order: 2,
+      },
+      {
+        id: 3,
+        title: "Deterministic Motion & WebGL",
+        slug: "motion-webgl-experiences",
+        short_description: "Crafting bespoke animation choreography, 60 FPS GSAP timelines, and isolated 3D scenes.",
+        description: "",
+        features: ["GSAP 3 ScrollTrigger scrub", "Reduced-motion accessibility", "React Three Fiber canvases"],
+        is_active: true,
+        sort_order: 3,
       },
     ];
   }
 
   return (
-    <div className="min-h-screen flex flex-col justify-between p-8 md:p-16 max-w-7xl mx-auto">
-      <header className="flex justify-between items-center py-6 border-b border-white/10">
-        <div className="flex items-center space-x-3">
-          <div className="w-3 h-3 rounded-full bg-emerald-400 animate-pulse" />
-          <span className="text-sm font-mono tracking-wider uppercase text-zinc-400">
-            {profile?.availability_status === 'available' ? 'Available for Consulting' : 'Engineering Showcase'}
-          </span>
-        </div>
-        <nav className="flex space-x-6 text-sm font-medium">
-          <Link href="/projects" className="text-zinc-400 hover:text-white transition-colors">Projects</Link>
-          <Link href="/experience" className="text-zinc-400 hover:text-white transition-colors">Experience</Link>
-          <Link href="/services" className="text-zinc-400 hover:text-white transition-colors">Services</Link>
-          <Link href="/articles" className="text-zinc-400 hover:text-white transition-colors">Articles</Link>
-          <Link href="/contact" className="text-cyan-400 hover:text-cyan-300 transition-colors">Contact</Link>
-        </nav>
-      </header>
-
-      <main className="my-auto py-20">
+    <div className="w-full">
+      {/* 1. Hero Section */}
+      <section className="relative min-h-[calc(100vh-5rem)] flex flex-col justify-center px-6 sm:px-8 md:px-12 max-w-7xl mx-auto py-20">
         <div className="max-w-4xl space-y-6">
-          <span className="inline-block px-3 py-1 rounded-full text-xs font-mono bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
-            Systems Architecture × Creative Engineering
-          </span>
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white leading-tight">
+          <Eyebrow>Systems Architecture × Creative Engineering</Eyebrow>
+
+          <Display size="2xl">
             {profile?.full_name ?? "Mahardika Rafa"}
-          </h1>
-          <p className="text-xl sm:text-2xl text-zinc-400 leading-relaxed max-w-3xl">
+          </Display>
+
+          <Text size="lg" variant="primary" className="max-w-3xl font-medium sm:text-2xl text-zinc-300">
             {profile?.headline ?? "Systems Architect & Creative Full-Stack Engineer"}
-          </p>
-          <p className="text-base text-zinc-500 max-w-2xl">
+          </Text>
+
+          <Text size="base" variant="secondary" className="max-w-2xl text-zinc-400">
             {profile?.bio}
-          </p>
+          </Text>
 
           <div className="pt-6 flex flex-wrap gap-4">
-            <Link
+            <Button
               href="/projects"
-              className="px-6 py-3 rounded-md bg-white text-black font-semibold text-sm hover:bg-zinc-200 transition-colors"
+              variant="primary"
+              size="lg"
+              rightIcon={<span>→</span>}
             >
-              Explore Selected Projects →
-            </Link>
-            <Link
+              Explore Selected Works
+            </Button>
+            <Button
               href="/contact"
-              className="px-6 py-3 rounded-md bg-zinc-900 text-zinc-300 border border-zinc-800 font-semibold text-sm hover:bg-zinc-800 hover:text-white transition-colors"
+              variant="secondary"
+              size="lg"
             >
               Initiate Consultation
-            </Link>
+            </Button>
           </div>
         </div>
+      </section>
 
-        {featuredProjects.length > 0 && (
-          <section className="mt-24 pt-12 border-t border-white/10">
-            <div className="flex justify-between items-end mb-8">
-              <div>
-                <h2 className="text-2xl font-bold text-white tracking-tight">Featured Engineering</h2>
-                <p className="text-sm text-zinc-400 mt-1">High-impact architectures and interactive systems</p>
-              </div>
-              <Link href="/projects" className="text-sm text-cyan-400 hover:underline">
-                View all projects ({featuredProjects.length}+) →
-              </Link>
-            </div>
+      {/* 2. Featured Engineering Works */}
+      {featuredProjects.length > 0 && (
+        <SectionWrapper
+          index={1}
+          title="Featured Engineering"
+          subtitle="High-impact system architectures, transaction engines, and interactive digital artifacts"
+          actionLabel="View all projects"
+          actionHref="/projects"
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {featuredProjects.slice(0, 4).map((project) => (
+              <ProjectCard key={project.id} project={project} />
+            ))}
+          </div>
+        </SectionWrapper>
+      )}
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {featuredProjects.slice(0, 2).map((project) => (
-                <Link
-                  key={project.id}
-                  href={`/projects/${project.slug}`}
-                  className="group block p-6 rounded-lg bg-zinc-900/60 border border-zinc-800/80 hover:border-cyan-500/50 transition-all duration-300"
-                >
-                  <div className="flex justify-between items-center mb-3">
-                    <span className="text-xs font-mono text-zinc-500">{project.year}</span>
-                    <span className="text-xs font-mono text-cyan-400 group-hover:translate-x-1 transition-transform">
-                      Case Study →
-                    </span>
+      {/* 3. Capabilities & Services */}
+      {coreServices.length > 0 && (
+        <SectionWrapper
+          index={2}
+          title="Core Capabilities"
+          subtitle="Specialized domain mastery delivering resilience from low-level database clustering to fluid frontends"
+          actionLabel="View all services"
+          actionHref="/services"
+        >
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {coreServices.slice(0, 3).map((service) => (
+              <div
+                key={service.id}
+                className="flex flex-col justify-between p-8 rounded-xl bg-zinc-900/60 border border-zinc-800/80 hover:border-cyan-400/40 transition-all duration-300"
+              >
+                <div>
+                  <div className="w-10 h-10 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 font-mono text-sm mb-6">
+                    0{service.sort_order}
                   </div>
-                  <h3 className="text-lg font-bold text-white group-hover:text-cyan-400 transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-sm text-zinc-400 mt-2 line-clamp-2">
-                    {project.summary}
+                  <h3 className="text-xl font-bold font-display text-white mb-3">{service.title}</h3>
+                  <p className="text-sm text-zinc-400 font-body leading-relaxed mb-6">
+                    {service.short_description}
                   </p>
-                </Link>
-              ))}
-            </div>
-          </section>
-        )}
-      </main>
+                  {service.features && (
+                    <ul className="space-y-2 border-t border-zinc-800/80 pt-6">
+                      {service.features.map((feat, idx) => (
+                        <li key={idx} className="flex items-start text-xs text-zinc-300 font-body">
+                          <span className="text-cyan-400 mr-2">›</span>
+                          <span>{feat}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </SectionWrapper>
+      )}
 
-      <footer className="py-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center text-xs text-zinc-500">
-        <p>© {new Date().getFullYear()} Mahardika Rafa. Built with Next.js 16 & Laravel 13.</p>
-        <div className="flex space-x-6 mt-4 sm:mt-0">
-          <Link href="/projects" className="hover:text-zinc-300">Projects</Link>
-          <Link href="/experience" className="hover:text-zinc-300">Experience</Link>
-          <Link href="/articles" className="hover:text-zinc-300">Articles</Link>
-          <Link href="/contact" className="hover:text-zinc-300">Contact</Link>
+      {/* 4. Technical Writings */}
+      {recentArticles.length > 0 && (
+        <SectionWrapper
+          index={3}
+          title="Technical Writings"
+          subtitle="Deep dives on distributed systems engineering, high-throughput caching, and deterministic frontend motion"
+          actionLabel="View all articles"
+          actionHref="/articles"
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {recentArticles.slice(0, 2).map((article) => (
+              <ArticleCard key={article.id} article={article} />
+            ))}
+          </div>
+        </SectionWrapper>
+      )}
+
+      {/* 5. Direct Engagement Callout */}
+      <SectionWrapper
+        index={4}
+        title="Ready to Build Resilient Systems?"
+        subtitle="Available for select Q3/Q4 architectural advisory, performance optimizations, and creative engineering contracts."
+      >
+        <div className="p-8 sm:p-12 rounded-2xl bg-gradient-to-b from-zinc-900/80 to-zinc-950 border border-zinc-800 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
+          <div className="space-y-2 max-w-xl">
+            <h3 className="text-2xl font-bold font-display text-white">Let’s engineer something exceptional.</h3>
+            <p className="text-sm text-zinc-400 font-body leading-relaxed">
+              Whether you need to scale to tens of thousands of requests per second or craft an interactive digital identity.
+            </p>
+          </div>
+          <Button
+            href="/contact"
+            variant="accent"
+            size="lg"
+            rightIcon={<span>→</span>}
+          >
+            Initiate Consultation
+          </Button>
         </div>
-      </footer>
+      </SectionWrapper>
     </div>
   );
 }

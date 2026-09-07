@@ -1,5 +1,7 @@
-import Link from "next/link";
 import { portfolioApi } from "@/lib/api/client";
+import { Display, Text, Eyebrow } from "@/components/ui/Typography";
+import { SectionWrapper } from "@/components/ui/SectionWrapper";
+import { ProjectCard } from "@/components/projects/ProjectCard";
 import type { Project } from "@/types/api";
 
 export default async function ProjectsPage() {
@@ -20,6 +22,11 @@ export default async function ProjectsPage() {
         featured: true,
         status: "published",
         sort_order: 1,
+        technologies: [
+          { id: 1, name: "Next.js 16", slug: "nextjs", category: "frontend" },
+          { id: 2, name: "Laravel 13", slug: "laravel", category: "backend" },
+          { id: 3, name: "GSAP 3", slug: "gsap", category: "motion" },
+        ],
       },
       {
         id: 2,
@@ -31,6 +38,10 @@ export default async function ProjectsPage() {
         featured: true,
         status: "published",
         sort_order: 2,
+        technologies: [
+          { id: 4, name: "Redis Streams", slug: "redis", category: "infra" },
+          { id: 5, name: "MySQL 8", slug: "mysql", category: "db" },
+        ],
       },
       {
         id: 3,
@@ -42,59 +53,36 @@ export default async function ProjectsPage() {
         featured: false,
         status: "published",
         sort_order: 3,
+        technologies: [
+          { id: 6, name: "Three.js", slug: "threejs", category: "3d" },
+          { id: 7, name: "TypeScript", slug: "ts", category: "language" },
+        ],
       },
     ];
   }
 
   return (
-    <div className="min-h-screen p-8 md:p-16 max-w-7xl mx-auto">
-      <div className="flex justify-between items-center py-6 border-b border-white/10 mb-12">
-        <Link href="/" className="text-xs font-mono text-zinc-400 hover:text-white transition-colors">
-          ← Back to Overview
-        </Link>
-        <span className="text-xs font-mono text-cyan-400">Selected Works (2023 — 2026)</span>
-      </div>
-
-      <header className="max-w-2xl mb-16">
-        <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-4">
-          Architectural Systems & Creative Case Studies
-        </h1>
-        <p className="text-zinc-400 leading-relaxed">
-          A curated selection of high-concurrency systems, low-latency microservices, and bespoke interactive user experiences.
-        </p>
+    <div className="w-full">
+      <header className="px-6 sm:px-8 md:px-12 max-w-7xl mx-auto pt-16 pb-12">
+        <Eyebrow className="mb-3">Archive & Case Studies (2023 — 2026)</Eyebrow>
+        <Display size="xl" className="mb-4">
+          Architectural Systems & Engineering Case Studies
+        </Display>
+        <Text size="lg" variant="secondary" className="max-w-2xl">
+          A curated selection of high-concurrency architectures, low-latency microservices, and bespoke interactive user experiences.
+        </Text>
       </header>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {projects.map((project) => (
-          <Link
-            key={project.id}
-            href={`/projects/${project.slug}`}
-            className="group flex flex-col justify-between p-6 rounded-lg bg-zinc-900/60 border border-zinc-800 hover:border-cyan-500/50 transition-all duration-300 min-h-[220px]"
-          >
-            <div>
-              <div className="flex justify-between items-center mb-3">
-                <span className="text-xs font-mono text-zinc-500">{project.year}</span>
-                {project.featured && (
-                  <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
-                    Featured
-                  </span>
-                )}
-              </div>
-              <h2 className="text-lg font-bold text-white group-hover:text-cyan-400 transition-colors">
-                {project.title}
-              </h2>
-              <p className="text-sm text-zinc-400 mt-2 line-clamp-3">
-                {project.summary}
-              </p>
-            </div>
-
-            <div className="pt-4 mt-4 border-t border-zinc-800/60 flex items-center justify-between text-xs font-mono text-zinc-400 group-hover:text-cyan-400">
-              <span>Explore Technical Case Study</span>
-              <span className="group-hover:translate-x-1 transition-transform">→</span>
-            </div>
-          </Link>
-        ))}
-      </div>
+      <SectionWrapper
+        title="All Projects"
+        subtitle={`Showing ${projects.length} engineering case studies`}
+      >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projects.map((project) => (
+            <ProjectCard key={project.id} project={project} />
+          ))}
+        </div>
+      </SectionWrapper>
     </div>
   );
 }
