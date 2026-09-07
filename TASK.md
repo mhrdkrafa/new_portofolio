@@ -69,7 +69,7 @@
 - [x] Audit logs.
 
 ## Phase 5 — Next.js
-- [ ] Create Next.js 16 App Router app.
+- [x] Create Next.js 16 App Router app.
 - [ ] TypeScript.
 - [ ] Tailwind.
 - [ ] ESLint.
