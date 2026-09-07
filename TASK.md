@@ -75,7 +75,7 @@
 - [x] ESLint.
 - [x] API client.
 - [x] Typed API models.
-- [ ] Routes.
+- [x] Routes.
 - [ ] Metadata.
 - [ ] Error/loading/not-found states.
 - [ ] Image strategy.
