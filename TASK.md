@@ -117,7 +117,7 @@
 - [x] Home.
 - [x] Projects index.
 - [x] Project detail.
-- [ ] About.
+- [x] About.
 - [ ] Experience.
 - [ ] Services.
 - [ ] Articles.
