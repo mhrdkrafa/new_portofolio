@@ -119,7 +119,7 @@
 - [x] Project detail.
 - [x] About.
 - [x] Experience.
-- [ ] Services.
+- [x] Services.
 - [ ] Articles.
 - [ ] Article detail.
 - [ ] Contact.
