@@ -105,7 +105,7 @@
 - [x] Reduced-motion mode.
 
 ## Phase 8 — 3D
-- [ ] Decide whether 3D adds real value.
+- [x] Decide whether 3D adds real value.
 - [ ] Create isolated R3F scene.
 - [ ] Lazy-load scene.
 - [ ] Mobile fallback.
