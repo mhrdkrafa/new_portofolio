@@ -115,7 +115,7 @@
 
 ## Phase 9 — Public Pages
 - [x] Home.
-- [ ] Projects index.
+- [x] Projects index.
 - [ ] Project detail.
 - [ ] About.
 - [ ] Experience.
