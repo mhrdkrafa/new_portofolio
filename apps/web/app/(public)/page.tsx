@@ -8,6 +8,7 @@ import type { Project, Profile, Article, Service } from "@/types/api";
 
 import { HeroMotion } from "@/components/motion/HeroMotion";
 import { ProjectReveal } from "@/components/motion/ProjectReveal";
+import { Magnetic } from "@/components/motion/Magnetic";
 
 export default async function HomePage() {
   let profile: Profile | null = null;
@@ -164,21 +165,25 @@ export default async function HomePage() {
           </div>
 
           <div data-hero-actions className="pt-6 flex flex-wrap gap-4">
-            <Button
-              href="/projects"
-              variant="primary"
-              size="lg"
-              rightIcon={<span>→</span>}
-            >
-              Explore Selected Works
-            </Button>
-            <Button
-              href="/contact"
-              variant="secondary"
-              size="lg"
-            >
-              Initiate Consultation
-            </Button>
+            <Magnetic>
+              <Button
+                href="/projects"
+                variant="primary"
+                size="lg"
+                rightIcon={<span>→</span>}
+              >
+                Explore Selected Works
+              </Button>
+            </Magnetic>
+            <Magnetic>
+              <Button
+                href="/contact"
+                variant="secondary"
+                size="lg"
+              >
+                Initiate Consultation
+              </Button>
+            </Magnetic>
           </div>
         </HeroMotion>
       </section>

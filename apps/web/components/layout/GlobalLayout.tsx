@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { CursorFollower } from "@/components/motion/CursorFollower";
 
 interface GlobalLayoutProps {
   children: ReactNode;
@@ -7,6 +8,9 @@ interface GlobalLayoutProps {
 export function GlobalLayout({ children }: GlobalLayoutProps) {
   return (
     <div className="relative min-h-screen bg-canvas text-text-primary selection:bg-accent-primary selection:text-black antialiased flex flex-col justify-between">
+      {/* Interactive Cursor Follower */}
+      <CursorFollower />
+
       {/* Accessibility Skip Link */}
       <a
         href="#main-content"

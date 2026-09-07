@@ -101,7 +101,7 @@
 - [x] Text reveal.
 - [x] Project reveal.
 - [x] Page transitions.
-- [ ] Cursor interaction.
+- [x] Cursor interaction.
 - [ ] Reduced-motion mode.
 
 ## Phase 8 — 3D
