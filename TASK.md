@@ -82,7 +82,7 @@
 
 ## Phase 6 — Core UI
 - [x] Global layout.
-- [ ] Header.
+- [x] Header.
 - [ ] Footer.
 - [ ] Buttons/links.
 - [ ] Typography.
