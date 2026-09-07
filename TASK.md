@@ -108,7 +108,7 @@
 - [x] Decide whether 3D adds real value.
 - [x] Create isolated R3F scene.
 - [x] Lazy-load scene.
-- [ ] Mobile fallback.
+- [x] Mobile fallback.
 - [ ] Reduced-motion fallback.
 - [ ] WebGL failure fallback.
 - [ ] Performance test.
