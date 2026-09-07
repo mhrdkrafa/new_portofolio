@@ -87,7 +87,7 @@
 - [x] Buttons/links.
 - [x] Typography.
 - [x] Project card.
-- [ ] Article card.
+- [x] Article card.
 - [ ] Section wrapper.
 - [ ] Media component.
 - [ ] Contact form.
