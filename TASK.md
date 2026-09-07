@@ -94,7 +94,7 @@
 - [x] Responsive navigation.
 
 ## Phase 7 — Motion
-- [ ] GSAP setup.
+- [x] GSAP setup.
 - [ ] @gsap/react setup.
 - [ ] ScrollTrigger.
 - [ ] Hero animation.
