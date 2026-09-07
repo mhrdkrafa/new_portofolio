@@ -72,7 +72,7 @@
 - [x] Create Next.js 16 App Router app.
 - [x] TypeScript.
 - [x] Tailwind.
-- [ ] ESLint.
+- [x] ESLint.
 - [ ] API client.
 - [ ] Typed API models.
 - [ ] Routes.
