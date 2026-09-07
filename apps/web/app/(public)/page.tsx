@@ -7,6 +7,7 @@ import { ArticleCard } from "@/components/articles/ArticleCard";
 import type { Project, Profile, Article, Service } from "@/types/api";
 
 import { HeroMotion } from "@/components/motion/HeroMotion";
+import { ProjectReveal } from "@/components/motion/ProjectReveal";
 
 export default async function HomePage() {
   let profile: Profile | null = null;
@@ -191,11 +192,11 @@ export default async function HomePage() {
           actionLabel="View all projects"
           actionHref="/projects"
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <ProjectReveal className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {featuredProjects.slice(0, 4).map((project) => (
               <ProjectCard key={project.id} project={project} />
             ))}
-          </div>
+          </ProjectReveal>
         </SectionWrapper>
       )}
 

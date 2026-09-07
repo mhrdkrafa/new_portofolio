@@ -2,6 +2,7 @@ import { portfolioApi } from "@/lib/api/client";
 import { Display, Text, Eyebrow } from "@/components/ui/Typography";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { ProjectCard } from "@/components/projects/ProjectCard";
+import { ProjectReveal } from "@/components/motion/ProjectReveal";
 import type { Project } from "@/types/api";
 
 export default async function ProjectsPage() {
@@ -77,11 +78,11 @@ export default async function ProjectsPage() {
         title="All Projects"
         subtitle={`Showing ${projects.length} engineering case studies`}
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <ProjectReveal className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
-        </div>
+        </ProjectReveal>
       </SectionWrapper>
     </div>
   );

@@ -99,7 +99,7 @@
 - [x] ScrollTrigger.
 - [x] Hero animation.
 - [x] Text reveal.
-- [ ] Project reveal.
+- [x] Project reveal.
 - [ ] Page transitions.
 - [ ] Cursor interaction.
 - [ ] Reduced-motion mode.
