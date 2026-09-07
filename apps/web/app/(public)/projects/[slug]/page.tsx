@@ -1,12 +1,28 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import { portfolioApi } from "@/lib/api/client";
+import { constructMetadata } from "@/lib/seo/metadata";
 import type { Project } from "@/types/api";
 
 interface ProjectDetailPageProps {
   params: Promise<{
     slug: string;
   }>;
+}
+
+export async function generateMetadata(props: ProjectDetailPageProps): Promise<Metadata> {
+  const { slug } = await props.params;
+  const title = slug
+    .split("-")
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(" ");
+
+  return constructMetadata({
+    title: `${title} — Engineering Case Study`,
+    description: `Detailed architectural case study and technical implementation of ${title}.`,
+    canonical: `/projects/${slug}`,
+  });
 }
 
 export default async function ProjectDetailPage(props: ProjectDetailPageProps) {

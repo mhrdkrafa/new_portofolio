@@ -1,12 +1,28 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import { portfolioApi } from "@/lib/api/client";
+import { constructMetadata } from "@/lib/seo/metadata";
 import type { Article } from "@/types/api";
 
 interface ArticleDetailPageProps {
   params: Promise<{
     slug: string;
   }>;
+}
+
+export async function generateMetadata(props: ArticleDetailPageProps): Promise<Metadata> {
+  const { slug } = await props.params;
+  const title = slug
+    .split("-")
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(" ");
+
+  return constructMetadata({
+    title: `${title} — Technical Essay`,
+    description: `Read the architectural deep-dive: ${title}.`,
+    canonical: `/articles/${slug}`,
+  });
 }
 
 export default async function ArticleDetailPage(props: ArticleDetailPageProps) {

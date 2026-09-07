@@ -76,7 +76,7 @@
 - [x] API client.
 - [x] Typed API models.
 - [x] Routes.
-- [ ] Metadata.
+- [x] Metadata.
 - [ ] Error/loading/not-found states.
 - [ ] Image strategy.
 
