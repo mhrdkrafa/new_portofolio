@@ -85,7 +85,7 @@
 - [x] Header.
 - [x] Footer.
 - [x] Buttons/links.
-- [ ] Typography.
+- [x] Typography.
 - [ ] Project card.
 - [ ] Article card.
 - [ ] Section wrapper.
