@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { PageTransition } from "@/components/motion/PageTransition";
 import { portfolioApi } from "@/lib/api/client";
 import type { Profile } from "@/types/api";
 
@@ -26,7 +27,9 @@ export default async function PublicLayout({ children }: PublicLayoutProps) {
   return (
     <>
       <Header statusText={statusText} isAvailable={isAvailable} />
-      <main className="flex-1">{children}</main>
+      <main className="flex-1 flex flex-col">
+        <PageTransition>{children}</PageTransition>
+      </main>
       <Footer />
     </>
   );

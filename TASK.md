@@ -100,7 +100,7 @@
 - [x] Hero animation.
 - [x] Text reveal.
 - [x] Project reveal.
-- [ ] Page transitions.
+- [x] Page transitions.
 - [ ] Cursor interaction.
 - [ ] Reduced-motion mode.
 
