@@ -84,7 +84,7 @@
 - [x] Global layout.
 - [x] Header.
 - [x] Footer.
-- [ ] Buttons/links.
+- [x] Buttons/links.
 - [ ] Typography.
 - [ ] Project card.
 - [ ] Article card.
