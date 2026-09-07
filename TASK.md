@@ -114,7 +114,7 @@
 - [x] Performance test.
 
 ## Phase 9 — Public Pages
-- [ ] Home.
+- [x] Home.
 - [ ] Projects index.
 - [ ] Project detail.
 - [ ] About.
