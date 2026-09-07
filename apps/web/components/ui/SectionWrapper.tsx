@@ -39,7 +39,7 @@ export function SectionWrapper({
             <div className="max-w-2xl space-y-2">
               {formattedIndex && (
                 <div className="text-xs font-mono tracking-widest text-cyan-400 uppercase font-semibold">
-                  // {formattedIndex}
+                  {"//"} {formattedIndex}
                 </div>
               )}
               {title && (

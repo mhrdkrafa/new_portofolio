@@ -54,11 +54,11 @@ export function ProjectMediaViewer({
                 <span className="text-cyan-300">dispatchStreamPipeline</span>(
                 <span className="text-amber-300">payload</span>: TransactionContext
                 ): <span className="text-emerald-300">Promise&lt;AckReceipt&gt;</span> &#123;
-                {"\n"}  <span className="text-zinc-500">// Atomic Redis distributed lock acquisition</span>
+                {"\n"}  <span className="text-zinc-500">{"// Atomic Redis distributed lock acquisition"}</span>
                 {"\n"}  <span className="text-purple-400">const</span> lock = <span className="text-purple-400">await</span> Redis.acquireLock(payload.id, 250);
                 {"\n"}  <span className="text-purple-400">if</span> (!lock) <span className="text-purple-400">throw new</span> ConcurrencyLockException();
                 {"\n"}
-                {"\n"}  <span className="text-zinc-500">// Publish to sub-millisecond settlement worker stream</span>
+                {"\n"}  <span className="text-zinc-500">{"// Publish to sub-millisecond settlement worker stream"}</span>
                 {"\n"}  <span className="text-purple-400">const</span> streamSeq = <span className="text-purple-400">await</span> Redis.xadd(<span className="text-emerald-400">&quot;events:transact&quot;</span>, <span className="text-emerald-400">&quot;*&quot;</span>, payload);
                 {"\n"}  <span className="text-purple-400">return</span> &#123; status: <span className="text-emerald-400">&quot;ACK&quot;</span>, seq: streamSeq &#125;;
                 {"\n"}&#125;
