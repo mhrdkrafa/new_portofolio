@@ -95,7 +95,7 @@
 
 ## Phase 7 — Motion
 - [x] GSAP setup.
-- [ ] @gsap/react setup.
+- [x] @gsap/react setup.
 - [ ] ScrollTrigger.
 - [ ] Hero animation.
 - [ ] Text reveal.

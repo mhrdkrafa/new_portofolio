@@ -1,4 +1,9 @@
 import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(useGSAP);
+}
 
 /**
  * Design system motion tokens aligned with DESIGN.md & tokens.css
@@ -38,5 +43,5 @@ export function initGsapDefaults() {
   });
 }
 
-export { gsap };
+export { gsap, useGSAP };
 export default gsap;
