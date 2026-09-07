@@ -66,5 +66,13 @@ export function killAllScrollTriggers() {
   ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
 }
 
+/**
+ * Check if prefers-reduced-motion is currently active in the browser environment
+ */
+export function isReducedMotionActive(): boolean {
+  if (typeof window === "undefined") return false;
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
 export { gsap, useGSAP, ScrollTrigger };
 export default gsap;

@@ -102,7 +102,7 @@
 - [x] Project reveal.
 - [x] Page transitions.
 - [x] Cursor interaction.
-- [ ] Reduced-motion mode.
+- [x] Reduced-motion mode.
 
 ## Phase 8 — 3D
 - [ ] Decide whether 3D adds real value.
