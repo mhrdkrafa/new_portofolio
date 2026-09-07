@@ -110,7 +110,7 @@
 - [x] Lazy-load scene.
 - [x] Mobile fallback.
 - [x] Reduced-motion fallback.
-- [ ] WebGL failure fallback.
+- [x] WebGL failure fallback.
 - [ ] Performance test.
 
 ## Phase 9 — Public Pages

@@ -9,6 +9,7 @@ import type { Project, Profile, Article, Service } from "@/types/api";
 import { HeroMotion } from "@/components/motion/HeroMotion";
 import { ProjectReveal } from "@/components/motion/ProjectReveal";
 import { Magnetic } from "@/components/motion/Magnetic";
+import { DynamicHeroScene } from "@/components/3d/DynamicHeroScene";
 
 export default async function HomePage() {
   let profile: Profile | null = null;
@@ -134,58 +135,68 @@ export default async function HomePage() {
   return (
     <div className="w-full">
       {/* 1. Hero Section */}
-      <section className="relative min-h-[calc(100vh-5rem)] flex flex-col justify-center px-6 sm:px-8 md:px-12 max-w-7xl mx-auto py-20 overflow-hidden">
+      <section className="relative min-h-[calc(100vh-5rem)] flex items-center px-6 sm:px-8 md:px-12 max-w-7xl mx-auto py-16 sm:py-20 overflow-hidden">
         {/* Subtle decorative glow */}
         <div
           data-hero-glow
           className="pointer-events-none absolute -top-24 -left-24 w-96 h-96 rounded-full bg-cyan-500/10 blur-3xl"
         />
 
-        <HeroMotion className="max-w-4xl space-y-6">
-          <div data-hero-eyebrow>
-            <Eyebrow>Systems Architecture × Creative Engineering</Eyebrow>
-          </div>
+        <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          <HeroMotion className="lg:col-span-7 space-y-6">
+            <div data-hero-eyebrow>
+              <Eyebrow>Systems Architecture × Creative Engineering</Eyebrow>
+            </div>
 
-          <div data-hero-title>
-            <Display size="2xl">
-              {profile?.full_name ?? "Mahardika Rafa"}
-            </Display>
-          </div>
+            <div data-hero-title>
+              <Display size="2xl">
+                {profile?.full_name ?? "Mahardika Rafa"}
+              </Display>
+            </div>
 
-          <div data-hero-headline>
-            <Text size="lg" variant="primary" className="max-w-3xl font-medium sm:text-2xl text-zinc-300">
-              {profile?.headline ?? "Systems Architect & Creative Full-Stack Engineer"}
-            </Text>
-          </div>
+            <div data-hero-headline>
+              <Text size="lg" variant="primary" className="max-w-3xl font-medium sm:text-2xl text-zinc-300">
+                {profile?.headline ?? "Systems Architect & Creative Full-Stack Engineer"}
+              </Text>
+            </div>
 
-          <div data-hero-bio>
-            <Text size="base" variant="secondary" className="max-w-2xl text-zinc-400">
-              {profile?.bio}
-            </Text>
-          </div>
+            <div data-hero-bio>
+              <Text size="base" variant="secondary" className="max-w-2xl text-zinc-400">
+                {profile?.bio}
+              </Text>
+            </div>
 
-          <div data-hero-actions className="pt-6 flex flex-wrap gap-4">
-            <Magnetic>
-              <Button
-                href="/projects"
-                variant="primary"
-                size="lg"
-                rightIcon={<span>→</span>}
-              >
-                Explore Selected Works
-              </Button>
-            </Magnetic>
-            <Magnetic>
-              <Button
-                href="/contact"
-                variant="secondary"
-                size="lg"
-              >
-                Initiate Consultation
-              </Button>
-            </Magnetic>
+            <div data-hero-actions className="pt-6 flex flex-wrap gap-4">
+              <Magnetic>
+                <Button
+                  href="/projects"
+                  variant="primary"
+                  size="lg"
+                  rightIcon={<span>→</span>}
+                >
+                  Explore Selected Works
+                </Button>
+              </Magnetic>
+              <Magnetic>
+                <Button
+                  href="/contact"
+                  variant="secondary"
+                  size="lg"
+                >
+                  Initiate Consultation
+                </Button>
+              </Magnetic>
+            </div>
+          </HeroMotion>
+
+          {/* 3D WebGL Architectural Centerpiece with Fallbacks */}
+          <div
+            data-hero-decor
+            className="lg:col-span-5 h-[340px] sm:h-[400px] lg:h-[480px] w-full flex items-center justify-center pointer-events-none lg:pointer-events-auto"
+          >
+            <DynamicHeroScene className="w-full h-full" />
           </div>
-        </HeroMotion>
+        </div>
       </section>
 
       {/* 2. Featured Engineering Works */}

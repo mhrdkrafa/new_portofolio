@@ -3,6 +3,7 @@
 import { useSyncExternalStore } from "react";
 import dynamic from "next/dynamic";
 import { FallbackVisual } from "./FallbackVisual";
+import { WebGLBoundary, useIsWebGLSupported } from "./WebGLBoundary";
 import type { HeroSceneProps } from "./HeroScene";
 
 function subscribeMobile(callback: () => void) {
@@ -35,13 +36,24 @@ const HeroSceneDynamic = dynamic<HeroSceneProps>(
 
 export function DynamicHeroScene(props: HeroSceneProps) {
   const isMobile = useIsMobileDevice();
+  const webglSupported = useIsWebGLSupported();
 
-  // On mobile or touch devices, bypass WebGL completely and render lightweight SVG/CSS visual
+  // 1. Mobile / Touch Fallback: bypass WebGL to conserve GPU/battery
   if (isMobile) {
     return <FallbackVisual className={props.className} />;
   }
 
-  return <HeroSceneDynamic {...props} />;
+  // 2. WebGL Unsupported Fallback: if browser lacks WebGL capability
+  if (!webglSupported) {
+    return <FallbackVisual className={props.className} />;
+  }
+
+  // 3. WebGL Boundary: protects against runtime context loss or crash
+  return (
+    <WebGLBoundary fallback={<FallbackVisual className={props.className} />}>
+      <HeroSceneDynamic {...props} />
+    </WebGLBoundary>
+  );
 }
 
 export default DynamicHeroScene;
