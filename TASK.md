@@ -89,7 +89,7 @@
 - [x] Project card.
 - [x] Article card.
 - [x] Section wrapper.
-- [ ] Media component.
+- [x] Media component.
 - [ ] Contact form.
 - [ ] Responsive navigation.
 
