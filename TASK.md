@@ -73,7 +73,7 @@
 - [x] TypeScript.
 - [x] Tailwind.
 - [x] ESLint.
-- [ ] API client.
+- [x] API client.
 - [ ] Typed API models.
 - [ ] Routes.
 - [ ] Metadata.
