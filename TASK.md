@@ -77,7 +77,7 @@
 - [x] Typed API models.
 - [x] Routes.
 - [x] Metadata.
-- [ ] Error/loading/not-found states.
+- [x] Error/loading/not-found states.
 - [ ] Image strategy.
 
 ## Phase 6 — Core UI
