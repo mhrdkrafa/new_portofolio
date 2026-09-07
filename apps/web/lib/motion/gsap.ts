@@ -1,8 +1,10 @@
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+// Register client-side plugins
 if (typeof window !== "undefined") {
-  gsap.registerPlugin(useGSAP);
+  gsap.registerPlugin(useGSAP, ScrollTrigger);
 }
 
 /**
@@ -41,7 +43,28 @@ export function initGsapDefaults() {
     ease: MOTION_EASE.quartOut,
     duration: MOTION_DURATION.medium,
   });
+
+  // Default ScrollTrigger configuration
+  ScrollTrigger.defaults({
+    markers: false,
+  });
 }
 
-export { gsap, useGSAP };
+/**
+ * Recalculates scroll positions and triggers
+ */
+export function refreshScrollTrigger() {
+  if (typeof window === "undefined") return;
+  ScrollTrigger.refresh();
+}
+
+/**
+ * Kill all active scroll triggers (useful when navigating or cleaning up)
+ */
+export function killAllScrollTriggers() {
+  if (typeof window === "undefined") return;
+  ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+}
+
+export { gsap, useGSAP, ScrollTrigger };
 export default gsap;
