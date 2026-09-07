@@ -90,7 +90,7 @@
 - [x] Article card.
 - [x] Section wrapper.
 - [x] Media component.
-- [ ] Contact form.
+- [x] Contact form.
 - [ ] Responsive navigation.
 
 ## Phase 7 — Motion
