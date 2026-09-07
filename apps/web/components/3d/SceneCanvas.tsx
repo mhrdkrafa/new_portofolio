@@ -7,16 +7,19 @@ export interface SceneCanvasProps {
   className?: string;
   interactive?: boolean;
   reduceMotion?: boolean;
+  frameloop?: "always" | "never" | "demand";
 }
 
 export function SceneCanvas({
   className = "",
   interactive = true,
   reduceMotion = false,
+  frameloop = "always",
 }: SceneCanvasProps) {
   return (
     <div className={`w-full h-full relative ${className}`}>
       <Canvas
+        frameloop={frameloop}
         camera={{ position: [0, 0, 4.8], fov: 42 }}
         dpr={[1, 1.5]}
         gl={{

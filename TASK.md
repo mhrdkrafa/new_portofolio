@@ -111,7 +111,7 @@
 - [x] Mobile fallback.
 - [x] Reduced-motion fallback.
 - [x] WebGL failure fallback.
-- [ ] Performance test.
+- [x] Performance test.
 
 ## Phase 9 — Public Pages
 - [ ] Home.
