@@ -122,7 +122,7 @@
 - [x] Services.
 - [x] Articles.
 - [x] Article detail.
-- [ ] Contact.
+- [x] Contact.
 
 ## Phase 10 — CMS Integration
 - [ ] Profile API.
