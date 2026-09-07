@@ -1,5 +1,6 @@
 import type { HTMLAttributes, ReactNode } from "react";
 import Link from "next/link";
+import { TextReveal } from "@/components/motion/TextReveal";
 
 export interface SectionWrapperProps extends HTMLAttributes<HTMLElement> {
   id?: string;
@@ -10,6 +11,7 @@ export interface SectionWrapperProps extends HTMLAttributes<HTMLElement> {
   actionHref?: string;
   children: ReactNode;
   containerClassName?: string;
+  animateTitle?: boolean;
 }
 
 export function SectionWrapper({
@@ -22,6 +24,7 @@ export function SectionWrapper({
   children,
   className = "",
   containerClassName = "",
+  animateTitle = true,
   ...props
 }: SectionWrapperProps) {
   const formattedIndex =
@@ -43,9 +46,17 @@ export function SectionWrapper({
                 </div>
               )}
               {title && (
-                <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold font-display text-white tracking-tight leading-tight">
-                  {title}
-                </h2>
+                animateTitle ? (
+                  <TextReveal
+                    as="h2"
+                    text={title}
+                    className="text-2xl sm:text-4xl md:text-5xl font-bold font-display text-white tracking-tight leading-tight"
+                  />
+                ) : (
+                  <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold font-display text-white tracking-tight leading-tight">
+                    {title}
+                  </h2>
+                )
               )}
               {subtitle && (
                 <p className="text-sm sm:text-base text-zinc-400 font-body leading-relaxed max-w-xl">
