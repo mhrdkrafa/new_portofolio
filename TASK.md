@@ -81,7 +81,7 @@
 - [x] Image strategy.
 
 ## Phase 6 — Core UI
-- [ ] Global layout.
+- [x] Global layout.
 - [ ] Header.
 - [ ] Footer.
 - [ ] Buttons/links.

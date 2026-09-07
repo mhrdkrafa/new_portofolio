@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { constructMetadata } from "@/lib/seo/metadata";
+import { GlobalLayout } from "@/components/layout/GlobalLayout";
 import "./globals.css";
 
 export const metadata: Metadata = constructMetadata();
@@ -20,8 +21,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
-      <body className="antialiased bg-canvas text-text-primary selection:bg-accent-primary selection:text-black">
-        {children}
+      <body className="antialiased">
+        <GlobalLayout>{children}</GlobalLayout>
       </body>
     </html>
   );
