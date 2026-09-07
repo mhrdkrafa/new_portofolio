@@ -71,7 +71,7 @@
 ## Phase 5 — Next.js
 - [x] Create Next.js 16 App Router app.
 - [x] TypeScript.
-- [ ] Tailwind.
+- [x] Tailwind.
 - [ ] ESLint.
 - [ ] API client.
 - [ ] Typed API models.
