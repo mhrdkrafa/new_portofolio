@@ -52,7 +52,8 @@ export async function fetchApi<T>(
     }
   }
 
-  const { revalidate, tags, params, headers, ...customConfig } = options;
+  const { revalidate, tags, headers, ...customConfig } = options;
+  delete (customConfig as { params?: unknown }).params;
 
   const requestHeaders: HeadersInit = {
     'Accept': 'application/json',

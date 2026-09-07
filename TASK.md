@@ -78,7 +78,7 @@
 - [x] Routes.
 - [x] Metadata.
 - [x] Error/loading/not-found states.
-- [ ] Image strategy.
+- [x] Image strategy.
 
 ## Phase 6 — Core UI
 - [ ] Global layout.
