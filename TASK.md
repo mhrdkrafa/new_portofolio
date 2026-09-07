@@ -86,7 +86,7 @@
 - [x] Footer.
 - [x] Buttons/links.
 - [x] Typography.
-- [ ] Project card.
+- [x] Project card.
 - [ ] Article card.
 - [ ] Section wrapper.
 - [ ] Media component.
