@@ -91,7 +91,7 @@
 - [x] Section wrapper.
 - [x] Media component.
 - [x] Contact form.
-- [ ] Responsive navigation.
+- [x] Responsive navigation.
 
 ## Phase 7 — Motion
 - [ ] GSAP setup.
